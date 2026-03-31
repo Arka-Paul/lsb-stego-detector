@@ -1,0 +1,8 @@
+dataset/payloads/*.rtf linguist-detectable=false
+dataset/payloads/*.docx linguist-detectable=false
+dataset/payloads/*.pdf linguist-detectable=false
+dataset/payloads/*.xlsx linguist-detectable=false
+dataset/payloads/*.pptx linguist-detectable=false
+dataset/stego/* linguist-detectable=false
+dataset/clean/* linguist-detectable=false
+docs/images/* linguist-detectable=false
