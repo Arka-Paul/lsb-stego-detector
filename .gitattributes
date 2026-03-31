@@ -1,8 +1,12 @@
-*.docx linguist-detectable=false
-*.pdf linguist-detectable=false
-*.xlsx linguist-detectable=false
-*.pptx linguist-detectable=false
-*.rtf linguist-detectable=false
-dataset/clean/* linguist-detectable=false
-dataset/stego/* linguist-detectable=false
-docs/images/* linguist-detectable=false
+# Ignore dataset files completely
+dataset/** linguist-vendored
+
+# Ignore docs/images
+docs/images/** linguist-vendored
+
+# Ignore document formats globally
+*.docx linguist-vendored
+*.pdf linguist-vendored
+*.xlsx linguist-vendored
+*.pptx linguist-vendored
+*.rtf linguist-vendored
