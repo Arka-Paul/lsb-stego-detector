@@ -1,0 +1,16 @@
+metric,value
+total_images,1848
+correct_detections,1848
+incorrect_detections,0
+total_runtime_seconds,10169.855299
+average_runtime_per_image_seconds,5.503168
+fastest_successful_image,Flat-Color_1_S__exe_small__lsb3.bmp
+fastest_successful_runtime_seconds,0.171048
+fastest_successful_payload_type,EXE
+fastest_successful_lsb,3
+fastest_successful_subset,core
+slowest_successful_image,XL-Synthetic_10_B__docx_medium__lsb3.bmp
+slowest_successful_runtime_seconds,120.603337
+slowest_successful_payload_type,DOCX
+slowest_successful_lsb,3
+slowest_successful_subset,extended_xl

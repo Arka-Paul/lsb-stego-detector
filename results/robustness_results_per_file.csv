@@ -1,0 +1,217 @@
+scenario,file,subset,expected_type,true_lsb,tested_path,predicted_type,outcome,correct,unknown,misclassified,error
+Original,Flat-Color_1_S__docx_small__lsb1.bmp,core,DOCX,1,/home/kali/Desktop/stego_dataset_expanded/stego_core_combined/Flat-Color_1_S__docx_small__lsb1.bmp,DOCX,Correct,1,0,0,0
+JPEG Compression,Flat-Color_1_S__docx_small__lsb1.bmp,core,DOCX,1,/home/kali/Desktop/stego_dataset_expanded/robustness_test/Flat-Color_1_S__docx_small__lsb1__jpeg_q85.jpg,UNKNOWN,Unknown,0,1,0,0
+Resizing,Flat-Color_1_S__docx_small__lsb1.bmp,core,DOCX,1,/home/kali/Desktop/stego_dataset_expanded/robustness_test/Flat-Color_1_S__docx_small__lsb1__resize_90.png,UNKNOWN,Unknown,0,1,0,0
+Slight Noise,Flat-Color_1_S__docx_small__lsb1.bmp,core,DOCX,1,/home/kali/Desktop/stego_dataset_expanded/robustness_test/Flat-Color_1_S__docx_small__lsb1__noise.png,UNKNOWN,Unknown,0,1,0,0
+Wrong LSB Depth,Flat-Color_1_S__docx_small__lsb1.bmp,core,DOCX,1,/home/kali/Desktop/stego_dataset_expanded/stego_core_combined/Flat-Color_1_S__docx_small__lsb1.bmp,UNKNOWN,Unknown,0,1,0,0
+Reduced Buffer,Flat-Color_1_S__docx_small__lsb1.bmp,core,DOCX,1,/home/kali/Desktop/stego_dataset_expanded/stego_core_combined/Flat-Color_1_S__docx_small__lsb1.bmp,ZIP,Unknown,0,1,0,0
+Original,Flat-Color_1_S__docx_small__lsb2.bmp,core,DOCX,2,/home/kali/Desktop/stego_dataset_expanded/stego_core_combined/Flat-Color_1_S__docx_small__lsb2.bmp,DOCX,Correct,1,0,0,0
+JPEG Compression,Flat-Color_1_S__docx_small__lsb2.bmp,core,DOCX,2,/home/kali/Desktop/stego_dataset_expanded/robustness_test/Flat-Color_1_S__docx_small__lsb2__jpeg_q85.jpg,UNKNOWN,Unknown,0,1,0,0
+Resizing,Flat-Color_1_S__docx_small__lsb2.bmp,core,DOCX,2,/home/kali/Desktop/stego_dataset_expanded/robustness_test/Flat-Color_1_S__docx_small__lsb2__resize_90.png,UNKNOWN,Unknown,0,1,0,0
+Slight Noise,Flat-Color_1_S__docx_small__lsb2.bmp,core,DOCX,2,/home/kali/Desktop/stego_dataset_expanded/robustness_test/Flat-Color_1_S__docx_small__lsb2__noise.png,UNKNOWN,Unknown,0,1,0,0
+Wrong LSB Depth,Flat-Color_1_S__docx_small__lsb2.bmp,core,DOCX,2,/home/kali/Desktop/stego_dataset_expanded/stego_core_combined/Flat-Color_1_S__docx_small__lsb2.bmp,UNKNOWN,Unknown,0,1,0,0
+Reduced Buffer,Flat-Color_1_S__docx_small__lsb2.bmp,core,DOCX,2,/home/kali/Desktop/stego_dataset_expanded/stego_core_combined/Flat-Color_1_S__docx_small__lsb2.bmp,ZIP,Unknown,0,1,0,0
+Original,Flat-Color_1_S__docx_small__lsb3.bmp,core,DOCX,3,/home/kali/Desktop/stego_dataset_expanded/stego_core_combined/Flat-Color_1_S__docx_small__lsb3.bmp,DOCX,Correct,1,0,0,0
+JPEG Compression,Flat-Color_1_S__docx_small__lsb3.bmp,core,DOCX,3,/home/kali/Desktop/stego_dataset_expanded/robustness_test/Flat-Color_1_S__docx_small__lsb3__jpeg_q85.jpg,UNKNOWN,Unknown,0,1,0,0
+Resizing,Flat-Color_1_S__docx_small__lsb3.bmp,core,DOCX,3,/home/kali/Desktop/stego_dataset_expanded/robustness_test/Flat-Color_1_S__docx_small__lsb3__resize_90.png,UNKNOWN,Unknown,0,1,0,0
+Slight Noise,Flat-Color_1_S__docx_small__lsb3.bmp,core,DOCX,3,/home/kali/Desktop/stego_dataset_expanded/robustness_test/Flat-Color_1_S__docx_small__lsb3__noise.png,UNKNOWN,Unknown,0,1,0,0
+Wrong LSB Depth,Flat-Color_1_S__docx_small__lsb3.bmp,core,DOCX,3,/home/kali/Desktop/stego_dataset_expanded/stego_core_combined/Flat-Color_1_S__docx_small__lsb3.bmp,UNKNOWN,Unknown,0,1,0,0
+Reduced Buffer,Flat-Color_1_S__docx_small__lsb3.bmp,core,DOCX,3,/home/kali/Desktop/stego_dataset_expanded/stego_core_combined/Flat-Color_1_S__docx_small__lsb3.bmp,ZIP,Unknown,0,1,0,0
+Original,Flat-Color_1_S__exe_small__lsb1.bmp,core,EXE,1,/home/kali/Desktop/stego_dataset_expanded/stego_core_combined/Flat-Color_1_S__exe_small__lsb1.bmp,EXE,Correct,1,0,0,0
+JPEG Compression,Flat-Color_1_S__exe_small__lsb1.bmp,core,EXE,1,/home/kali/Desktop/stego_dataset_expanded/robustness_test/Flat-Color_1_S__exe_small__lsb1__jpeg_q85.jpg,UNKNOWN,Unknown,0,1,0,0
+Resizing,Flat-Color_1_S__exe_small__lsb1.bmp,core,EXE,1,/home/kali/Desktop/stego_dataset_expanded/robustness_test/Flat-Color_1_S__exe_small__lsb1__resize_90.png,UNKNOWN,Unknown,0,1,0,0
+Slight Noise,Flat-Color_1_S__exe_small__lsb1.bmp,core,EXE,1,/home/kali/Desktop/stego_dataset_expanded/robustness_test/Flat-Color_1_S__exe_small__lsb1__noise.png,UNKNOWN,Unknown,0,1,0,0
+Wrong LSB Depth,Flat-Color_1_S__exe_small__lsb1.bmp,core,EXE,1,/home/kali/Desktop/stego_dataset_expanded/stego_core_combined/Flat-Color_1_S__exe_small__lsb1.bmp,UNKNOWN,Unknown,0,1,0,0
+Reduced Buffer,Flat-Color_1_S__exe_small__lsb1.bmp,core,EXE,1,/home/kali/Desktop/stego_dataset_expanded/stego_core_combined/Flat-Color_1_S__exe_small__lsb1.bmp,EXE,Correct,1,0,0,0
+Original,Flat-Color_1_S__exe_small__lsb2.bmp,core,EXE,2,/home/kali/Desktop/stego_dataset_expanded/stego_core_combined/Flat-Color_1_S__exe_small__lsb2.bmp,EXE,Correct,1,0,0,0
+JPEG Compression,Flat-Color_1_S__exe_small__lsb2.bmp,core,EXE,2,/home/kali/Desktop/stego_dataset_expanded/robustness_test/Flat-Color_1_S__exe_small__lsb2__jpeg_q85.jpg,UNKNOWN,Unknown,0,1,0,0
+Resizing,Flat-Color_1_S__exe_small__lsb2.bmp,core,EXE,2,/home/kali/Desktop/stego_dataset_expanded/robustness_test/Flat-Color_1_S__exe_small__lsb2__resize_90.png,UNKNOWN,Unknown,0,1,0,0
+Slight Noise,Flat-Color_1_S__exe_small__lsb2.bmp,core,EXE,2,/home/kali/Desktop/stego_dataset_expanded/robustness_test/Flat-Color_1_S__exe_small__lsb2__noise.png,UNKNOWN,Unknown,0,1,0,0
+Wrong LSB Depth,Flat-Color_1_S__exe_small__lsb2.bmp,core,EXE,2,/home/kali/Desktop/stego_dataset_expanded/stego_core_combined/Flat-Color_1_S__exe_small__lsb2.bmp,UNKNOWN,Unknown,0,1,0,0
+Reduced Buffer,Flat-Color_1_S__exe_small__lsb2.bmp,core,EXE,2,/home/kali/Desktop/stego_dataset_expanded/stego_core_combined/Flat-Color_1_S__exe_small__lsb2.bmp,EXE,Correct,1,0,0,0
+Original,Flat-Color_1_S__exe_small__lsb3.bmp,core,EXE,3,/home/kali/Desktop/stego_dataset_expanded/stego_core_combined/Flat-Color_1_S__exe_small__lsb3.bmp,EXE,Correct,1,0,0,0
+JPEG Compression,Flat-Color_1_S__exe_small__lsb3.bmp,core,EXE,3,/home/kali/Desktop/stego_dataset_expanded/robustness_test/Flat-Color_1_S__exe_small__lsb3__jpeg_q85.jpg,UNKNOWN,Unknown,0,1,0,0
+Resizing,Flat-Color_1_S__exe_small__lsb3.bmp,core,EXE,3,/home/kali/Desktop/stego_dataset_expanded/robustness_test/Flat-Color_1_S__exe_small__lsb3__resize_90.png,UNKNOWN,Unknown,0,1,0,0
+Slight Noise,Flat-Color_1_S__exe_small__lsb3.bmp,core,EXE,3,/home/kali/Desktop/stego_dataset_expanded/robustness_test/Flat-Color_1_S__exe_small__lsb3__noise.png,UNKNOWN,Unknown,0,1,0,0
+Wrong LSB Depth,Flat-Color_1_S__exe_small__lsb3.bmp,core,EXE,3,/home/kali/Desktop/stego_dataset_expanded/stego_core_combined/Flat-Color_1_S__exe_small__lsb3.bmp,UNKNOWN,Unknown,0,1,0,0
+Reduced Buffer,Flat-Color_1_S__exe_small__lsb3.bmp,core,EXE,3,/home/kali/Desktop/stego_dataset_expanded/stego_core_combined/Flat-Color_1_S__exe_small__lsb3.bmp,EXE,Correct,1,0,0,0
+Original,Flat-Color_1_S__pdf_small__lsb1.bmp,core,PDF,1,/home/kali/Desktop/stego_dataset_expanded/stego_core_combined/Flat-Color_1_S__pdf_small__lsb1.bmp,PDF,Correct,1,0,0,0
+JPEG Compression,Flat-Color_1_S__pdf_small__lsb1.bmp,core,PDF,1,/home/kali/Desktop/stego_dataset_expanded/robustness_test/Flat-Color_1_S__pdf_small__lsb1__jpeg_q85.jpg,UNKNOWN,Unknown,0,1,0,0
+Resizing,Flat-Color_1_S__pdf_small__lsb1.bmp,core,PDF,1,/home/kali/Desktop/stego_dataset_expanded/robustness_test/Flat-Color_1_S__pdf_small__lsb1__resize_90.png,UNKNOWN,Unknown,0,1,0,0
+Slight Noise,Flat-Color_1_S__pdf_small__lsb1.bmp,core,PDF,1,/home/kali/Desktop/stego_dataset_expanded/robustness_test/Flat-Color_1_S__pdf_small__lsb1__noise.png,UNKNOWN,Unknown,0,1,0,0
+Wrong LSB Depth,Flat-Color_1_S__pdf_small__lsb1.bmp,core,PDF,1,/home/kali/Desktop/stego_dataset_expanded/stego_core_combined/Flat-Color_1_S__pdf_small__lsb1.bmp,UNKNOWN,Unknown,0,1,0,0
+Reduced Buffer,Flat-Color_1_S__pdf_small__lsb1.bmp,core,PDF,1,/home/kali/Desktop/stego_dataset_expanded/stego_core_combined/Flat-Color_1_S__pdf_small__lsb1.bmp,PDF,Correct,1,0,0,0
+Original,Flat-Color_1_S__pdf_small__lsb2.bmp,core,PDF,2,/home/kali/Desktop/stego_dataset_expanded/stego_core_combined/Flat-Color_1_S__pdf_small__lsb2.bmp,PDF,Correct,1,0,0,0
+JPEG Compression,Flat-Color_1_S__pdf_small__lsb2.bmp,core,PDF,2,/home/kali/Desktop/stego_dataset_expanded/robustness_test/Flat-Color_1_S__pdf_small__lsb2__jpeg_q85.jpg,UNKNOWN,Unknown,0,1,0,0
+Resizing,Flat-Color_1_S__pdf_small__lsb2.bmp,core,PDF,2,/home/kali/Desktop/stego_dataset_expanded/robustness_test/Flat-Color_1_S__pdf_small__lsb2__resize_90.png,UNKNOWN,Unknown,0,1,0,0
+Slight Noise,Flat-Color_1_S__pdf_small__lsb2.bmp,core,PDF,2,/home/kali/Desktop/stego_dataset_expanded/robustness_test/Flat-Color_1_S__pdf_small__lsb2__noise.png,UNKNOWN,Unknown,0,1,0,0
+Wrong LSB Depth,Flat-Color_1_S__pdf_small__lsb2.bmp,core,PDF,2,/home/kali/Desktop/stego_dataset_expanded/stego_core_combined/Flat-Color_1_S__pdf_small__lsb2.bmp,UNKNOWN,Unknown,0,1,0,0
+Reduced Buffer,Flat-Color_1_S__pdf_small__lsb2.bmp,core,PDF,2,/home/kali/Desktop/stego_dataset_expanded/stego_core_combined/Flat-Color_1_S__pdf_small__lsb2.bmp,PDF,Correct,1,0,0,0
+Original,Flat-Color_1_S__pdf_small__lsb3.bmp,core,PDF,3,/home/kali/Desktop/stego_dataset_expanded/stego_core_combined/Flat-Color_1_S__pdf_small__lsb3.bmp,PDF,Correct,1,0,0,0
+JPEG Compression,Flat-Color_1_S__pdf_small__lsb3.bmp,core,PDF,3,/home/kali/Desktop/stego_dataset_expanded/robustness_test/Flat-Color_1_S__pdf_small__lsb3__jpeg_q85.jpg,UNKNOWN,Unknown,0,1,0,0
+Resizing,Flat-Color_1_S__pdf_small__lsb3.bmp,core,PDF,3,/home/kali/Desktop/stego_dataset_expanded/robustness_test/Flat-Color_1_S__pdf_small__lsb3__resize_90.png,UNKNOWN,Unknown,0,1,0,0
+Slight Noise,Flat-Color_1_S__pdf_small__lsb3.bmp,core,PDF,3,/home/kali/Desktop/stego_dataset_expanded/robustness_test/Flat-Color_1_S__pdf_small__lsb3__noise.png,UNKNOWN,Unknown,0,1,0,0
+Wrong LSB Depth,Flat-Color_1_S__pdf_small__lsb3.bmp,core,PDF,3,/home/kali/Desktop/stego_dataset_expanded/stego_core_combined/Flat-Color_1_S__pdf_small__lsb3.bmp,UNKNOWN,Unknown,0,1,0,0
+Reduced Buffer,Flat-Color_1_S__pdf_small__lsb3.bmp,core,PDF,3,/home/kali/Desktop/stego_dataset_expanded/stego_core_combined/Flat-Color_1_S__pdf_small__lsb3.bmp,PDF,Correct,1,0,0,0
+Original,Flat-Color_1_S__pptx_small__lsb1.bmp,core,PPTX,1,/home/kali/Desktop/stego_dataset_expanded/stego_core_combined/Flat-Color_1_S__pptx_small__lsb1.bmp,PPTX,Correct,1,0,0,0
+JPEG Compression,Flat-Color_1_S__pptx_small__lsb1.bmp,core,PPTX,1,/home/kali/Desktop/stego_dataset_expanded/robustness_test/Flat-Color_1_S__pptx_small__lsb1__jpeg_q85.jpg,UNKNOWN,Unknown,0,1,0,0
+Resizing,Flat-Color_1_S__pptx_small__lsb1.bmp,core,PPTX,1,/home/kali/Desktop/stego_dataset_expanded/robustness_test/Flat-Color_1_S__pptx_small__lsb1__resize_90.png,UNKNOWN,Unknown,0,1,0,0
+Slight Noise,Flat-Color_1_S__pptx_small__lsb1.bmp,core,PPTX,1,/home/kali/Desktop/stego_dataset_expanded/robustness_test/Flat-Color_1_S__pptx_small__lsb1__noise.png,UNKNOWN,Unknown,0,1,0,0
+Wrong LSB Depth,Flat-Color_1_S__pptx_small__lsb1.bmp,core,PPTX,1,/home/kali/Desktop/stego_dataset_expanded/stego_core_combined/Flat-Color_1_S__pptx_small__lsb1.bmp,UNKNOWN,Unknown,0,1,0,0
+Reduced Buffer,Flat-Color_1_S__pptx_small__lsb1.bmp,core,PPTX,1,/home/kali/Desktop/stego_dataset_expanded/stego_core_combined/Flat-Color_1_S__pptx_small__lsb1.bmp,ZIP,Unknown,0,1,0,0
+Original,Flat-Color_1_S__pptx_small__lsb2.bmp,core,PPTX,2,/home/kali/Desktop/stego_dataset_expanded/stego_core_combined/Flat-Color_1_S__pptx_small__lsb2.bmp,PPTX,Correct,1,0,0,0
+JPEG Compression,Flat-Color_1_S__pptx_small__lsb2.bmp,core,PPTX,2,/home/kali/Desktop/stego_dataset_expanded/robustness_test/Flat-Color_1_S__pptx_small__lsb2__jpeg_q85.jpg,UNKNOWN,Unknown,0,1,0,0
+Resizing,Flat-Color_1_S__pptx_small__lsb2.bmp,core,PPTX,2,/home/kali/Desktop/stego_dataset_expanded/robustness_test/Flat-Color_1_S__pptx_small__lsb2__resize_90.png,UNKNOWN,Unknown,0,1,0,0
+Slight Noise,Flat-Color_1_S__pptx_small__lsb2.bmp,core,PPTX,2,/home/kali/Desktop/stego_dataset_expanded/robustness_test/Flat-Color_1_S__pptx_small__lsb2__noise.png,UNKNOWN,Unknown,0,1,0,0
+Wrong LSB Depth,Flat-Color_1_S__pptx_small__lsb2.bmp,core,PPTX,2,/home/kali/Desktop/stego_dataset_expanded/stego_core_combined/Flat-Color_1_S__pptx_small__lsb2.bmp,UNKNOWN,Unknown,0,1,0,0
+Reduced Buffer,Flat-Color_1_S__pptx_small__lsb2.bmp,core,PPTX,2,/home/kali/Desktop/stego_dataset_expanded/stego_core_combined/Flat-Color_1_S__pptx_small__lsb2.bmp,ZIP,Unknown,0,1,0,0
+Original,Flat-Color_1_S__pptx_small__lsb3.bmp,core,PPTX,3,/home/kali/Desktop/stego_dataset_expanded/stego_core_combined/Flat-Color_1_S__pptx_small__lsb3.bmp,PPTX,Correct,1,0,0,0
+JPEG Compression,Flat-Color_1_S__pptx_small__lsb3.bmp,core,PPTX,3,/home/kali/Desktop/stego_dataset_expanded/robustness_test/Flat-Color_1_S__pptx_small__lsb3__jpeg_q85.jpg,UNKNOWN,Unknown,0,1,0,0
+Resizing,Flat-Color_1_S__pptx_small__lsb3.bmp,core,PPTX,3,/home/kali/Desktop/stego_dataset_expanded/robustness_test/Flat-Color_1_S__pptx_small__lsb3__resize_90.png,UNKNOWN,Unknown,0,1,0,0
+Slight Noise,Flat-Color_1_S__pptx_small__lsb3.bmp,core,PPTX,3,/home/kali/Desktop/stego_dataset_expanded/robustness_test/Flat-Color_1_S__pptx_small__lsb3__noise.png,UNKNOWN,Unknown,0,1,0,0
+Wrong LSB Depth,Flat-Color_1_S__pptx_small__lsb3.bmp,core,PPTX,3,/home/kali/Desktop/stego_dataset_expanded/stego_core_combined/Flat-Color_1_S__pptx_small__lsb3.bmp,UNKNOWN,Unknown,0,1,0,0
+Reduced Buffer,Flat-Color_1_S__pptx_small__lsb3.bmp,core,PPTX,3,/home/kali/Desktop/stego_dataset_expanded/stego_core_combined/Flat-Color_1_S__pptx_small__lsb3.bmp,ZIP,Unknown,0,1,0,0
+Original,Flat-Color_1_S__rtf_small__lsb1.bmp,core,RTF,1,/home/kali/Desktop/stego_dataset_expanded/stego_core_combined/Flat-Color_1_S__rtf_small__lsb1.bmp,RTF,Correct,1,0,0,0
+JPEG Compression,Flat-Color_1_S__rtf_small__lsb1.bmp,core,RTF,1,/home/kali/Desktop/stego_dataset_expanded/robustness_test/Flat-Color_1_S__rtf_small__lsb1__jpeg_q85.jpg,UNKNOWN,Unknown,0,1,0,0
+Resizing,Flat-Color_1_S__rtf_small__lsb1.bmp,core,RTF,1,/home/kali/Desktop/stego_dataset_expanded/robustness_test/Flat-Color_1_S__rtf_small__lsb1__resize_90.png,UNKNOWN,Unknown,0,1,0,0
+Slight Noise,Flat-Color_1_S__rtf_small__lsb1.bmp,core,RTF,1,/home/kali/Desktop/stego_dataset_expanded/robustness_test/Flat-Color_1_S__rtf_small__lsb1__noise.png,UNKNOWN,Unknown,0,1,0,0
+Wrong LSB Depth,Flat-Color_1_S__rtf_small__lsb1.bmp,core,RTF,1,/home/kali/Desktop/stego_dataset_expanded/stego_core_combined/Flat-Color_1_S__rtf_small__lsb1.bmp,UNKNOWN,Unknown,0,1,0,0
+Reduced Buffer,Flat-Color_1_S__rtf_small__lsb1.bmp,core,RTF,1,/home/kali/Desktop/stego_dataset_expanded/stego_core_combined/Flat-Color_1_S__rtf_small__lsb1.bmp,RTF,Correct,1,0,0,0
+Original,Flat-Color_1_S__rtf_small__lsb2.bmp,core,RTF,2,/home/kali/Desktop/stego_dataset_expanded/stego_core_combined/Flat-Color_1_S__rtf_small__lsb2.bmp,RTF,Correct,1,0,0,0
+JPEG Compression,Flat-Color_1_S__rtf_small__lsb2.bmp,core,RTF,2,/home/kali/Desktop/stego_dataset_expanded/robustness_test/Flat-Color_1_S__rtf_small__lsb2__jpeg_q85.jpg,UNKNOWN,Unknown,0,1,0,0
+Resizing,Flat-Color_1_S__rtf_small__lsb2.bmp,core,RTF,2,/home/kali/Desktop/stego_dataset_expanded/robustness_test/Flat-Color_1_S__rtf_small__lsb2__resize_90.png,UNKNOWN,Unknown,0,1,0,0
+Slight Noise,Flat-Color_1_S__rtf_small__lsb2.bmp,core,RTF,2,/home/kali/Desktop/stego_dataset_expanded/robustness_test/Flat-Color_1_S__rtf_small__lsb2__noise.png,UNKNOWN,Unknown,0,1,0,0
+Wrong LSB Depth,Flat-Color_1_S__rtf_small__lsb2.bmp,core,RTF,2,/home/kali/Desktop/stego_dataset_expanded/stego_core_combined/Flat-Color_1_S__rtf_small__lsb2.bmp,UNKNOWN,Unknown,0,1,0,0
+Reduced Buffer,Flat-Color_1_S__rtf_small__lsb2.bmp,core,RTF,2,/home/kali/Desktop/stego_dataset_expanded/stego_core_combined/Flat-Color_1_S__rtf_small__lsb2.bmp,RTF,Correct,1,0,0,0
+Original,Flat-Color_1_S__rtf_small__lsb3.bmp,core,RTF,3,/home/kali/Desktop/stego_dataset_expanded/stego_core_combined/Flat-Color_1_S__rtf_small__lsb3.bmp,RTF,Correct,1,0,0,0
+JPEG Compression,Flat-Color_1_S__rtf_small__lsb3.bmp,core,RTF,3,/home/kali/Desktop/stego_dataset_expanded/robustness_test/Flat-Color_1_S__rtf_small__lsb3__jpeg_q85.jpg,UNKNOWN,Unknown,0,1,0,0
+Resizing,Flat-Color_1_S__rtf_small__lsb3.bmp,core,RTF,3,/home/kali/Desktop/stego_dataset_expanded/robustness_test/Flat-Color_1_S__rtf_small__lsb3__resize_90.png,UNKNOWN,Unknown,0,1,0,0
+Slight Noise,Flat-Color_1_S__rtf_small__lsb3.bmp,core,RTF,3,/home/kali/Desktop/stego_dataset_expanded/robustness_test/Flat-Color_1_S__rtf_small__lsb3__noise.png,UNKNOWN,Unknown,0,1,0,0
+Wrong LSB Depth,Flat-Color_1_S__rtf_small__lsb3.bmp,core,RTF,3,/home/kali/Desktop/stego_dataset_expanded/stego_core_combined/Flat-Color_1_S__rtf_small__lsb3.bmp,UNKNOWN,Unknown,0,1,0,0
+Reduced Buffer,Flat-Color_1_S__rtf_small__lsb3.bmp,core,RTF,3,/home/kali/Desktop/stego_dataset_expanded/stego_core_combined/Flat-Color_1_S__rtf_small__lsb3.bmp,RTF,Correct,1,0,0,0
+Original,Flat-Color_1_S__xlsx_small__lsb1.bmp,core,XLSX,1,/home/kali/Desktop/stego_dataset_expanded/stego_core_combined/Flat-Color_1_S__xlsx_small__lsb1.bmp,XLSX,Correct,1,0,0,0
+JPEG Compression,Flat-Color_1_S__xlsx_small__lsb1.bmp,core,XLSX,1,/home/kali/Desktop/stego_dataset_expanded/robustness_test/Flat-Color_1_S__xlsx_small__lsb1__jpeg_q85.jpg,UNKNOWN,Unknown,0,1,0,0
+Resizing,Flat-Color_1_S__xlsx_small__lsb1.bmp,core,XLSX,1,/home/kali/Desktop/stego_dataset_expanded/robustness_test/Flat-Color_1_S__xlsx_small__lsb1__resize_90.png,UNKNOWN,Unknown,0,1,0,0
+Slight Noise,Flat-Color_1_S__xlsx_small__lsb1.bmp,core,XLSX,1,/home/kali/Desktop/stego_dataset_expanded/robustness_test/Flat-Color_1_S__xlsx_small__lsb1__noise.png,UNKNOWN,Unknown,0,1,0,0
+Wrong LSB Depth,Flat-Color_1_S__xlsx_small__lsb1.bmp,core,XLSX,1,/home/kali/Desktop/stego_dataset_expanded/stego_core_combined/Flat-Color_1_S__xlsx_small__lsb1.bmp,UNKNOWN,Unknown,0,1,0,0
+Reduced Buffer,Flat-Color_1_S__xlsx_small__lsb1.bmp,core,XLSX,1,/home/kali/Desktop/stego_dataset_expanded/stego_core_combined/Flat-Color_1_S__xlsx_small__lsb1.bmp,ZIP,Unknown,0,1,0,0
+Original,Flat-Color_1_S__xlsx_small__lsb2.bmp,core,XLSX,2,/home/kali/Desktop/stego_dataset_expanded/stego_core_combined/Flat-Color_1_S__xlsx_small__lsb2.bmp,XLSX,Correct,1,0,0,0
+JPEG Compression,Flat-Color_1_S__xlsx_small__lsb2.bmp,core,XLSX,2,/home/kali/Desktop/stego_dataset_expanded/robustness_test/Flat-Color_1_S__xlsx_small__lsb2__jpeg_q85.jpg,UNKNOWN,Unknown,0,1,0,0
+Resizing,Flat-Color_1_S__xlsx_small__lsb2.bmp,core,XLSX,2,/home/kali/Desktop/stego_dataset_expanded/robustness_test/Flat-Color_1_S__xlsx_small__lsb2__resize_90.png,UNKNOWN,Unknown,0,1,0,0
+Slight Noise,Flat-Color_1_S__xlsx_small__lsb2.bmp,core,XLSX,2,/home/kali/Desktop/stego_dataset_expanded/robustness_test/Flat-Color_1_S__xlsx_small__lsb2__noise.png,UNKNOWN,Unknown,0,1,0,0
+Wrong LSB Depth,Flat-Color_1_S__xlsx_small__lsb2.bmp,core,XLSX,2,/home/kali/Desktop/stego_dataset_expanded/stego_core_combined/Flat-Color_1_S__xlsx_small__lsb2.bmp,UNKNOWN,Unknown,0,1,0,0
+Reduced Buffer,Flat-Color_1_S__xlsx_small__lsb2.bmp,core,XLSX,2,/home/kali/Desktop/stego_dataset_expanded/stego_core_combined/Flat-Color_1_S__xlsx_small__lsb2.bmp,ZIP,Unknown,0,1,0,0
+Original,Flat-Color_1_S__xlsx_small__lsb3.bmp,core,XLSX,3,/home/kali/Desktop/stego_dataset_expanded/stego_core_combined/Flat-Color_1_S__xlsx_small__lsb3.bmp,XLSX,Correct,1,0,0,0
+JPEG Compression,Flat-Color_1_S__xlsx_small__lsb3.bmp,core,XLSX,3,/home/kali/Desktop/stego_dataset_expanded/robustness_test/Flat-Color_1_S__xlsx_small__lsb3__jpeg_q85.jpg,UNKNOWN,Unknown,0,1,0,0
+Resizing,Flat-Color_1_S__xlsx_small__lsb3.bmp,core,XLSX,3,/home/kali/Desktop/stego_dataset_expanded/robustness_test/Flat-Color_1_S__xlsx_small__lsb3__resize_90.png,UNKNOWN,Unknown,0,1,0,0
+Slight Noise,Flat-Color_1_S__xlsx_small__lsb3.bmp,core,XLSX,3,/home/kali/Desktop/stego_dataset_expanded/robustness_test/Flat-Color_1_S__xlsx_small__lsb3__noise.png,UNKNOWN,Unknown,0,1,0,0
+Wrong LSB Depth,Flat-Color_1_S__xlsx_small__lsb3.bmp,core,XLSX,3,/home/kali/Desktop/stego_dataset_expanded/stego_core_combined/Flat-Color_1_S__xlsx_small__lsb3.bmp,UNKNOWN,Unknown,0,1,0,0
+Reduced Buffer,Flat-Color_1_S__xlsx_small__lsb3.bmp,core,XLSX,3,/home/kali/Desktop/stego_dataset_expanded/stego_core_combined/Flat-Color_1_S__xlsx_small__lsb3.bmp,ZIP,Unknown,0,1,0,0
+Original,XL-Synthetic_10_B__docx_large__lsb1.bmp,extended_xl,DOCX,1,/home/kali/Desktop/stego_dataset_expanded/stego_core_combined/XL-Synthetic_10_B__docx_large__lsb1.bmp,DOCX,Correct,1,0,0,0
+JPEG Compression,XL-Synthetic_10_B__docx_large__lsb1.bmp,extended_xl,DOCX,1,/home/kali/Desktop/stego_dataset_expanded/robustness_test/XL-Synthetic_10_B__docx_large__lsb1__jpeg_q85.jpg,UNKNOWN,Unknown,0,1,0,0
+Resizing,XL-Synthetic_10_B__docx_large__lsb1.bmp,extended_xl,DOCX,1,/home/kali/Desktop/stego_dataset_expanded/robustness_test/XL-Synthetic_10_B__docx_large__lsb1__resize_90.png,UNKNOWN,Unknown,0,1,0,0
+Slight Noise,XL-Synthetic_10_B__docx_large__lsb1.bmp,extended_xl,DOCX,1,/home/kali/Desktop/stego_dataset_expanded/robustness_test/XL-Synthetic_10_B__docx_large__lsb1__noise.png,UNKNOWN,Unknown,0,1,0,0
+Wrong LSB Depth,XL-Synthetic_10_B__docx_large__lsb1.bmp,extended_xl,DOCX,1,/home/kali/Desktop/stego_dataset_expanded/stego_core_combined/XL-Synthetic_10_B__docx_large__lsb1.bmp,UNKNOWN,Unknown,0,1,0,0
+Reduced Buffer,XL-Synthetic_10_B__docx_large__lsb1.bmp,extended_xl,DOCX,1,/home/kali/Desktop/stego_dataset_expanded/stego_core_combined/XL-Synthetic_10_B__docx_large__lsb1.bmp,ZIP,Unknown,0,1,0,0
+Original,XL-Synthetic_10_B__docx_large__lsb2.bmp,extended_xl,DOCX,2,/home/kali/Desktop/stego_dataset_expanded/stego_core_combined/XL-Synthetic_10_B__docx_large__lsb2.bmp,DOCX,Correct,1,0,0,0
+JPEG Compression,XL-Synthetic_10_B__docx_large__lsb2.bmp,extended_xl,DOCX,2,/home/kali/Desktop/stego_dataset_expanded/robustness_test/XL-Synthetic_10_B__docx_large__lsb2__jpeg_q85.jpg,UNKNOWN,Unknown,0,1,0,0
+Resizing,XL-Synthetic_10_B__docx_large__lsb2.bmp,extended_xl,DOCX,2,/home/kali/Desktop/stego_dataset_expanded/robustness_test/XL-Synthetic_10_B__docx_large__lsb2__resize_90.png,UNKNOWN,Unknown,0,1,0,0
+Slight Noise,XL-Synthetic_10_B__docx_large__lsb2.bmp,extended_xl,DOCX,2,/home/kali/Desktop/stego_dataset_expanded/robustness_test/XL-Synthetic_10_B__docx_large__lsb2__noise.png,UNKNOWN,Unknown,0,1,0,0
+Wrong LSB Depth,XL-Synthetic_10_B__docx_large__lsb2.bmp,extended_xl,DOCX,2,/home/kali/Desktop/stego_dataset_expanded/stego_core_combined/XL-Synthetic_10_B__docx_large__lsb2.bmp,UNKNOWN,Unknown,0,1,0,0
+Reduced Buffer,XL-Synthetic_10_B__docx_large__lsb2.bmp,extended_xl,DOCX,2,/home/kali/Desktop/stego_dataset_expanded/stego_core_combined/XL-Synthetic_10_B__docx_large__lsb2.bmp,ZIP,Unknown,0,1,0,0
+Original,XL-Synthetic_10_B__docx_large__lsb3.bmp,extended_xl,DOCX,3,/home/kali/Desktop/stego_dataset_expanded/stego_core_combined/XL-Synthetic_10_B__docx_large__lsb3.bmp,DOCX,Correct,1,0,0,0
+JPEG Compression,XL-Synthetic_10_B__docx_large__lsb3.bmp,extended_xl,DOCX,3,/home/kali/Desktop/stego_dataset_expanded/robustness_test/XL-Synthetic_10_B__docx_large__lsb3__jpeg_q85.jpg,UNKNOWN,Unknown,0,1,0,0
+Resizing,XL-Synthetic_10_B__docx_large__lsb3.bmp,extended_xl,DOCX,3,/home/kali/Desktop/stego_dataset_expanded/robustness_test/XL-Synthetic_10_B__docx_large__lsb3__resize_90.png,UNKNOWN,Unknown,0,1,0,0
+Slight Noise,XL-Synthetic_10_B__docx_large__lsb3.bmp,extended_xl,DOCX,3,/home/kali/Desktop/stego_dataset_expanded/robustness_test/XL-Synthetic_10_B__docx_large__lsb3__noise.png,UNKNOWN,Unknown,0,1,0,0
+Wrong LSB Depth,XL-Synthetic_10_B__docx_large__lsb3.bmp,extended_xl,DOCX,3,/home/kali/Desktop/stego_dataset_expanded/stego_core_combined/XL-Synthetic_10_B__docx_large__lsb3.bmp,UNKNOWN,Unknown,0,1,0,0
+Reduced Buffer,XL-Synthetic_10_B__docx_large__lsb3.bmp,extended_xl,DOCX,3,/home/kali/Desktop/stego_dataset_expanded/stego_core_combined/XL-Synthetic_10_B__docx_large__lsb3.bmp,ZIP,Unknown,0,1,0,0
+Original,XL-Synthetic_10_B__exe_large__lsb1.bmp,extended_xl,EXE,1,/home/kali/Desktop/stego_dataset_expanded/stego_core_combined/XL-Synthetic_10_B__exe_large__lsb1.bmp,EXE,Correct,1,0,0,0
+JPEG Compression,XL-Synthetic_10_B__exe_large__lsb1.bmp,extended_xl,EXE,1,/home/kali/Desktop/stego_dataset_expanded/robustness_test/XL-Synthetic_10_B__exe_large__lsb1__jpeg_q85.jpg,UNKNOWN,Unknown,0,1,0,0
+Resizing,XL-Synthetic_10_B__exe_large__lsb1.bmp,extended_xl,EXE,1,/home/kali/Desktop/stego_dataset_expanded/robustness_test/XL-Synthetic_10_B__exe_large__lsb1__resize_90.png,UNKNOWN,Unknown,0,1,0,0
+Slight Noise,XL-Synthetic_10_B__exe_large__lsb1.bmp,extended_xl,EXE,1,/home/kali/Desktop/stego_dataset_expanded/robustness_test/XL-Synthetic_10_B__exe_large__lsb1__noise.png,UNKNOWN,Unknown,0,1,0,0
+Wrong LSB Depth,XL-Synthetic_10_B__exe_large__lsb1.bmp,extended_xl,EXE,1,/home/kali/Desktop/stego_dataset_expanded/stego_core_combined/XL-Synthetic_10_B__exe_large__lsb1.bmp,UNKNOWN,Unknown,0,1,0,0
+Reduced Buffer,XL-Synthetic_10_B__exe_large__lsb1.bmp,extended_xl,EXE,1,/home/kali/Desktop/stego_dataset_expanded/stego_core_combined/XL-Synthetic_10_B__exe_large__lsb1.bmp,EXE,Correct,1,0,0,0
+Original,XL-Synthetic_10_B__exe_large__lsb2.bmp,extended_xl,EXE,2,/home/kali/Desktop/stego_dataset_expanded/stego_core_combined/XL-Synthetic_10_B__exe_large__lsb2.bmp,EXE,Correct,1,0,0,0
+JPEG Compression,XL-Synthetic_10_B__exe_large__lsb2.bmp,extended_xl,EXE,2,/home/kali/Desktop/stego_dataset_expanded/robustness_test/XL-Synthetic_10_B__exe_large__lsb2__jpeg_q85.jpg,UNKNOWN,Unknown,0,1,0,0
+Resizing,XL-Synthetic_10_B__exe_large__lsb2.bmp,extended_xl,EXE,2,/home/kali/Desktop/stego_dataset_expanded/robustness_test/XL-Synthetic_10_B__exe_large__lsb2__resize_90.png,UNKNOWN,Unknown,0,1,0,0
+Slight Noise,XL-Synthetic_10_B__exe_large__lsb2.bmp,extended_xl,EXE,2,/home/kali/Desktop/stego_dataset_expanded/robustness_test/XL-Synthetic_10_B__exe_large__lsb2__noise.png,UNKNOWN,Unknown,0,1,0,0
+Wrong LSB Depth,XL-Synthetic_10_B__exe_large__lsb2.bmp,extended_xl,EXE,2,/home/kali/Desktop/stego_dataset_expanded/stego_core_combined/XL-Synthetic_10_B__exe_large__lsb2.bmp,UNKNOWN,Unknown,0,1,0,0
+Reduced Buffer,XL-Synthetic_10_B__exe_large__lsb2.bmp,extended_xl,EXE,2,/home/kali/Desktop/stego_dataset_expanded/stego_core_combined/XL-Synthetic_10_B__exe_large__lsb2.bmp,EXE,Correct,1,0,0,0
+Original,XL-Synthetic_10_B__exe_large__lsb3.bmp,extended_xl,EXE,3,/home/kali/Desktop/stego_dataset_expanded/stego_core_combined/XL-Synthetic_10_B__exe_large__lsb3.bmp,EXE,Correct,1,0,0,0
+JPEG Compression,XL-Synthetic_10_B__exe_large__lsb3.bmp,extended_xl,EXE,3,/home/kali/Desktop/stego_dataset_expanded/robustness_test/XL-Synthetic_10_B__exe_large__lsb3__jpeg_q85.jpg,UNKNOWN,Unknown,0,1,0,0
+Resizing,XL-Synthetic_10_B__exe_large__lsb3.bmp,extended_xl,EXE,3,/home/kali/Desktop/stego_dataset_expanded/robustness_test/XL-Synthetic_10_B__exe_large__lsb3__resize_90.png,UNKNOWN,Unknown,0,1,0,0
+Slight Noise,XL-Synthetic_10_B__exe_large__lsb3.bmp,extended_xl,EXE,3,/home/kali/Desktop/stego_dataset_expanded/robustness_test/XL-Synthetic_10_B__exe_large__lsb3__noise.png,UNKNOWN,Unknown,0,1,0,0
+Wrong LSB Depth,XL-Synthetic_10_B__exe_large__lsb3.bmp,extended_xl,EXE,3,/home/kali/Desktop/stego_dataset_expanded/stego_core_combined/XL-Synthetic_10_B__exe_large__lsb3.bmp,UNKNOWN,Unknown,0,1,0,0
+Reduced Buffer,XL-Synthetic_10_B__exe_large__lsb3.bmp,extended_xl,EXE,3,/home/kali/Desktop/stego_dataset_expanded/stego_core_combined/XL-Synthetic_10_B__exe_large__lsb3.bmp,EXE,Correct,1,0,0,0
+Original,XL-Synthetic_10_B__pdf_large__lsb1.bmp,extended_xl,PDF,1,/home/kali/Desktop/stego_dataset_expanded/stego_core_combined/XL-Synthetic_10_B__pdf_large__lsb1.bmp,PDF,Correct,1,0,0,0
+JPEG Compression,XL-Synthetic_10_B__pdf_large__lsb1.bmp,extended_xl,PDF,1,/home/kali/Desktop/stego_dataset_expanded/robustness_test/XL-Synthetic_10_B__pdf_large__lsb1__jpeg_q85.jpg,UNKNOWN,Unknown,0,1,0,0
+Resizing,XL-Synthetic_10_B__pdf_large__lsb1.bmp,extended_xl,PDF,1,/home/kali/Desktop/stego_dataset_expanded/robustness_test/XL-Synthetic_10_B__pdf_large__lsb1__resize_90.png,UNKNOWN,Unknown,0,1,0,0
+Slight Noise,XL-Synthetic_10_B__pdf_large__lsb1.bmp,extended_xl,PDF,1,/home/kali/Desktop/stego_dataset_expanded/robustness_test/XL-Synthetic_10_B__pdf_large__lsb1__noise.png,UNKNOWN,Unknown,0,1,0,0
+Wrong LSB Depth,XL-Synthetic_10_B__pdf_large__lsb1.bmp,extended_xl,PDF,1,/home/kali/Desktop/stego_dataset_expanded/stego_core_combined/XL-Synthetic_10_B__pdf_large__lsb1.bmp,UNKNOWN,Unknown,0,1,0,0
+Reduced Buffer,XL-Synthetic_10_B__pdf_large__lsb1.bmp,extended_xl,PDF,1,/home/kali/Desktop/stego_dataset_expanded/stego_core_combined/XL-Synthetic_10_B__pdf_large__lsb1.bmp,PDF,Correct,1,0,0,0
+Original,XL-Synthetic_10_B__pdf_large__lsb2.bmp,extended_xl,PDF,2,/home/kali/Desktop/stego_dataset_expanded/stego_core_combined/XL-Synthetic_10_B__pdf_large__lsb2.bmp,PDF,Correct,1,0,0,0
+JPEG Compression,XL-Synthetic_10_B__pdf_large__lsb2.bmp,extended_xl,PDF,2,/home/kali/Desktop/stego_dataset_expanded/robustness_test/XL-Synthetic_10_B__pdf_large__lsb2__jpeg_q85.jpg,UNKNOWN,Unknown,0,1,0,0
+Resizing,XL-Synthetic_10_B__pdf_large__lsb2.bmp,extended_xl,PDF,2,/home/kali/Desktop/stego_dataset_expanded/robustness_test/XL-Synthetic_10_B__pdf_large__lsb2__resize_90.png,UNKNOWN,Unknown,0,1,0,0
+Slight Noise,XL-Synthetic_10_B__pdf_large__lsb2.bmp,extended_xl,PDF,2,/home/kali/Desktop/stego_dataset_expanded/robustness_test/XL-Synthetic_10_B__pdf_large__lsb2__noise.png,UNKNOWN,Unknown,0,1,0,0
+Wrong LSB Depth,XL-Synthetic_10_B__pdf_large__lsb2.bmp,extended_xl,PDF,2,/home/kali/Desktop/stego_dataset_expanded/stego_core_combined/XL-Synthetic_10_B__pdf_large__lsb2.bmp,UNKNOWN,Unknown,0,1,0,0
+Reduced Buffer,XL-Synthetic_10_B__pdf_large__lsb2.bmp,extended_xl,PDF,2,/home/kali/Desktop/stego_dataset_expanded/stego_core_combined/XL-Synthetic_10_B__pdf_large__lsb2.bmp,PDF,Correct,1,0,0,0
+Original,XL-Synthetic_10_B__pdf_large__lsb3.bmp,extended_xl,PDF,3,/home/kali/Desktop/stego_dataset_expanded/stego_core_combined/XL-Synthetic_10_B__pdf_large__lsb3.bmp,PDF,Correct,1,0,0,0
+JPEG Compression,XL-Synthetic_10_B__pdf_large__lsb3.bmp,extended_xl,PDF,3,/home/kali/Desktop/stego_dataset_expanded/robustness_test/XL-Synthetic_10_B__pdf_large__lsb3__jpeg_q85.jpg,UNKNOWN,Unknown,0,1,0,0
+Resizing,XL-Synthetic_10_B__pdf_large__lsb3.bmp,extended_xl,PDF,3,/home/kali/Desktop/stego_dataset_expanded/robustness_test/XL-Synthetic_10_B__pdf_large__lsb3__resize_90.png,UNKNOWN,Unknown,0,1,0,0
+Slight Noise,XL-Synthetic_10_B__pdf_large__lsb3.bmp,extended_xl,PDF,3,/home/kali/Desktop/stego_dataset_expanded/robustness_test/XL-Synthetic_10_B__pdf_large__lsb3__noise.png,UNKNOWN,Unknown,0,1,0,0
+Wrong LSB Depth,XL-Synthetic_10_B__pdf_large__lsb3.bmp,extended_xl,PDF,3,/home/kali/Desktop/stego_dataset_expanded/stego_core_combined/XL-Synthetic_10_B__pdf_large__lsb3.bmp,UNKNOWN,Unknown,0,1,0,0
+Reduced Buffer,XL-Synthetic_10_B__pdf_large__lsb3.bmp,extended_xl,PDF,3,/home/kali/Desktop/stego_dataset_expanded/stego_core_combined/XL-Synthetic_10_B__pdf_large__lsb3.bmp,PDF,Correct,1,0,0,0
+Original,XL-Synthetic_10_B__pptx_large__lsb1.bmp,extended_xl,PPTX,1,/home/kali/Desktop/stego_dataset_expanded/stego_core_combined/XL-Synthetic_10_B__pptx_large__lsb1.bmp,PPTX,Correct,1,0,0,0
+JPEG Compression,XL-Synthetic_10_B__pptx_large__lsb1.bmp,extended_xl,PPTX,1,/home/kali/Desktop/stego_dataset_expanded/robustness_test/XL-Synthetic_10_B__pptx_large__lsb1__jpeg_q85.jpg,UNKNOWN,Unknown,0,1,0,0
+Resizing,XL-Synthetic_10_B__pptx_large__lsb1.bmp,extended_xl,PPTX,1,/home/kali/Desktop/stego_dataset_expanded/robustness_test/XL-Synthetic_10_B__pptx_large__lsb1__resize_90.png,UNKNOWN,Unknown,0,1,0,0
+Slight Noise,XL-Synthetic_10_B__pptx_large__lsb1.bmp,extended_xl,PPTX,1,/home/kali/Desktop/stego_dataset_expanded/robustness_test/XL-Synthetic_10_B__pptx_large__lsb1__noise.png,UNKNOWN,Unknown,0,1,0,0
+Wrong LSB Depth,XL-Synthetic_10_B__pptx_large__lsb1.bmp,extended_xl,PPTX,1,/home/kali/Desktop/stego_dataset_expanded/stego_core_combined/XL-Synthetic_10_B__pptx_large__lsb1.bmp,UNKNOWN,Unknown,0,1,0,0
+Reduced Buffer,XL-Synthetic_10_B__pptx_large__lsb1.bmp,extended_xl,PPTX,1,/home/kali/Desktop/stego_dataset_expanded/stego_core_combined/XL-Synthetic_10_B__pptx_large__lsb1.bmp,ZIP,Unknown,0,1,0,0
+Original,XL-Synthetic_10_B__pptx_large__lsb2.bmp,extended_xl,PPTX,2,/home/kali/Desktop/stego_dataset_expanded/stego_core_combined/XL-Synthetic_10_B__pptx_large__lsb2.bmp,PPTX,Correct,1,0,0,0
+JPEG Compression,XL-Synthetic_10_B__pptx_large__lsb2.bmp,extended_xl,PPTX,2,/home/kali/Desktop/stego_dataset_expanded/robustness_test/XL-Synthetic_10_B__pptx_large__lsb2__jpeg_q85.jpg,UNKNOWN,Unknown,0,1,0,0
+Resizing,XL-Synthetic_10_B__pptx_large__lsb2.bmp,extended_xl,PPTX,2,/home/kali/Desktop/stego_dataset_expanded/robustness_test/XL-Synthetic_10_B__pptx_large__lsb2__resize_90.png,UNKNOWN,Unknown,0,1,0,0
+Slight Noise,XL-Synthetic_10_B__pptx_large__lsb2.bmp,extended_xl,PPTX,2,/home/kali/Desktop/stego_dataset_expanded/robustness_test/XL-Synthetic_10_B__pptx_large__lsb2__noise.png,UNKNOWN,Unknown,0,1,0,0
+Wrong LSB Depth,XL-Synthetic_10_B__pptx_large__lsb2.bmp,extended_xl,PPTX,2,/home/kali/Desktop/stego_dataset_expanded/stego_core_combined/XL-Synthetic_10_B__pptx_large__lsb2.bmp,UNKNOWN,Unknown,0,1,0,0
+Reduced Buffer,XL-Synthetic_10_B__pptx_large__lsb2.bmp,extended_xl,PPTX,2,/home/kali/Desktop/stego_dataset_expanded/stego_core_combined/XL-Synthetic_10_B__pptx_large__lsb2.bmp,ZIP,Unknown,0,1,0,0
+Original,XL-Synthetic_10_B__pptx_large__lsb3.bmp,extended_xl,PPTX,3,/home/kali/Desktop/stego_dataset_expanded/stego_core_combined/XL-Synthetic_10_B__pptx_large__lsb3.bmp,PPTX,Correct,1,0,0,0
+JPEG Compression,XL-Synthetic_10_B__pptx_large__lsb3.bmp,extended_xl,PPTX,3,/home/kali/Desktop/stego_dataset_expanded/robustness_test/XL-Synthetic_10_B__pptx_large__lsb3__jpeg_q85.jpg,UNKNOWN,Unknown,0,1,0,0
+Resizing,XL-Synthetic_10_B__pptx_large__lsb3.bmp,extended_xl,PPTX,3,/home/kali/Desktop/stego_dataset_expanded/robustness_test/XL-Synthetic_10_B__pptx_large__lsb3__resize_90.png,UNKNOWN,Unknown,0,1,0,0
+Slight Noise,XL-Synthetic_10_B__pptx_large__lsb3.bmp,extended_xl,PPTX,3,/home/kali/Desktop/stego_dataset_expanded/robustness_test/XL-Synthetic_10_B__pptx_large__lsb3__noise.png,UNKNOWN,Unknown,0,1,0,0
+Wrong LSB Depth,XL-Synthetic_10_B__pptx_large__lsb3.bmp,extended_xl,PPTX,3,/home/kali/Desktop/stego_dataset_expanded/stego_core_combined/XL-Synthetic_10_B__pptx_large__lsb3.bmp,UNKNOWN,Unknown,0,1,0,0
+Reduced Buffer,XL-Synthetic_10_B__pptx_large__lsb3.bmp,extended_xl,PPTX,3,/home/kali/Desktop/stego_dataset_expanded/stego_core_combined/XL-Synthetic_10_B__pptx_large__lsb3.bmp,ZIP,Unknown,0,1,0,0
+Original,XL-Synthetic_10_B__rtf_large__lsb1.bmp,extended_xl,RTF,1,/home/kali/Desktop/stego_dataset_expanded/stego_core_combined/XL-Synthetic_10_B__rtf_large__lsb1.bmp,RTF,Correct,1,0,0,0
+JPEG Compression,XL-Synthetic_10_B__rtf_large__lsb1.bmp,extended_xl,RTF,1,/home/kali/Desktop/stego_dataset_expanded/robustness_test/XL-Synthetic_10_B__rtf_large__lsb1__jpeg_q85.jpg,UNKNOWN,Unknown,0,1,0,0
+Resizing,XL-Synthetic_10_B__rtf_large__lsb1.bmp,extended_xl,RTF,1,/home/kali/Desktop/stego_dataset_expanded/robustness_test/XL-Synthetic_10_B__rtf_large__lsb1__resize_90.png,UNKNOWN,Unknown,0,1,0,0
+Slight Noise,XL-Synthetic_10_B__rtf_large__lsb1.bmp,extended_xl,RTF,1,/home/kali/Desktop/stego_dataset_expanded/robustness_test/XL-Synthetic_10_B__rtf_large__lsb1__noise.png,UNKNOWN,Unknown,0,1,0,0
+Wrong LSB Depth,XL-Synthetic_10_B__rtf_large__lsb1.bmp,extended_xl,RTF,1,/home/kali/Desktop/stego_dataset_expanded/stego_core_combined/XL-Synthetic_10_B__rtf_large__lsb1.bmp,UNKNOWN,Unknown,0,1,0,0
+Reduced Buffer,XL-Synthetic_10_B__rtf_large__lsb1.bmp,extended_xl,RTF,1,/home/kali/Desktop/stego_dataset_expanded/stego_core_combined/XL-Synthetic_10_B__rtf_large__lsb1.bmp,RTF,Correct,1,0,0,0
+Original,XL-Synthetic_10_B__rtf_large__lsb2.bmp,extended_xl,RTF,2,/home/kali/Desktop/stego_dataset_expanded/stego_core_combined/XL-Synthetic_10_B__rtf_large__lsb2.bmp,RTF,Correct,1,0,0,0
+JPEG Compression,XL-Synthetic_10_B__rtf_large__lsb2.bmp,extended_xl,RTF,2,/home/kali/Desktop/stego_dataset_expanded/robustness_test/XL-Synthetic_10_B__rtf_large__lsb2__jpeg_q85.jpg,UNKNOWN,Unknown,0,1,0,0
+Resizing,XL-Synthetic_10_B__rtf_large__lsb2.bmp,extended_xl,RTF,2,/home/kali/Desktop/stego_dataset_expanded/robustness_test/XL-Synthetic_10_B__rtf_large__lsb2__resize_90.png,UNKNOWN,Unknown,0,1,0,0
+Slight Noise,XL-Synthetic_10_B__rtf_large__lsb2.bmp,extended_xl,RTF,2,/home/kali/Desktop/stego_dataset_expanded/robustness_test/XL-Synthetic_10_B__rtf_large__lsb2__noise.png,UNKNOWN,Unknown,0,1,0,0
+Wrong LSB Depth,XL-Synthetic_10_B__rtf_large__lsb2.bmp,extended_xl,RTF,2,/home/kali/Desktop/stego_dataset_expanded/stego_core_combined/XL-Synthetic_10_B__rtf_large__lsb2.bmp,UNKNOWN,Unknown,0,1,0,0
+Reduced Buffer,XL-Synthetic_10_B__rtf_large__lsb2.bmp,extended_xl,RTF,2,/home/kali/Desktop/stego_dataset_expanded/stego_core_combined/XL-Synthetic_10_B__rtf_large__lsb2.bmp,RTF,Correct,1,0,0,0
+Original,XL-Synthetic_10_B__rtf_large__lsb3.bmp,extended_xl,RTF,3,/home/kali/Desktop/stego_dataset_expanded/stego_core_combined/XL-Synthetic_10_B__rtf_large__lsb3.bmp,RTF,Correct,1,0,0,0
+JPEG Compression,XL-Synthetic_10_B__rtf_large__lsb3.bmp,extended_xl,RTF,3,/home/kali/Desktop/stego_dataset_expanded/robustness_test/XL-Synthetic_10_B__rtf_large__lsb3__jpeg_q85.jpg,UNKNOWN,Unknown,0,1,0,0
+Resizing,XL-Synthetic_10_B__rtf_large__lsb3.bmp,extended_xl,RTF,3,/home/kali/Desktop/stego_dataset_expanded/robustness_test/XL-Synthetic_10_B__rtf_large__lsb3__resize_90.png,UNKNOWN,Unknown,0,1,0,0
+Slight Noise,XL-Synthetic_10_B__rtf_large__lsb3.bmp,extended_xl,RTF,3,/home/kali/Desktop/stego_dataset_expanded/robustness_test/XL-Synthetic_10_B__rtf_large__lsb3__noise.png,UNKNOWN,Unknown,0,1,0,0
+Wrong LSB Depth,XL-Synthetic_10_B__rtf_large__lsb3.bmp,extended_xl,RTF,3,/home/kali/Desktop/stego_dataset_expanded/stego_core_combined/XL-Synthetic_10_B__rtf_large__lsb3.bmp,UNKNOWN,Unknown,0,1,0,0
+Reduced Buffer,XL-Synthetic_10_B__rtf_large__lsb3.bmp,extended_xl,RTF,3,/home/kali/Desktop/stego_dataset_expanded/stego_core_combined/XL-Synthetic_10_B__rtf_large__lsb3.bmp,RTF,Correct,1,0,0,0
+Original,XL-Synthetic_10_B__xlsx_large__lsb1.bmp,extended_xl,XLSX,1,/home/kali/Desktop/stego_dataset_expanded/stego_core_combined/XL-Synthetic_10_B__xlsx_large__lsb1.bmp,XLSX,Correct,1,0,0,0
+JPEG Compression,XL-Synthetic_10_B__xlsx_large__lsb1.bmp,extended_xl,XLSX,1,/home/kali/Desktop/stego_dataset_expanded/robustness_test/XL-Synthetic_10_B__xlsx_large__lsb1__jpeg_q85.jpg,UNKNOWN,Unknown,0,1,0,0
+Resizing,XL-Synthetic_10_B__xlsx_large__lsb1.bmp,extended_xl,XLSX,1,/home/kali/Desktop/stego_dataset_expanded/robustness_test/XL-Synthetic_10_B__xlsx_large__lsb1__resize_90.png,UNKNOWN,Unknown,0,1,0,0
+Slight Noise,XL-Synthetic_10_B__xlsx_large__lsb1.bmp,extended_xl,XLSX,1,/home/kali/Desktop/stego_dataset_expanded/robustness_test/XL-Synthetic_10_B__xlsx_large__lsb1__noise.png,UNKNOWN,Unknown,0,1,0,0
+Wrong LSB Depth,XL-Synthetic_10_B__xlsx_large__lsb1.bmp,extended_xl,XLSX,1,/home/kali/Desktop/stego_dataset_expanded/stego_core_combined/XL-Synthetic_10_B__xlsx_large__lsb1.bmp,UNKNOWN,Unknown,0,1,0,0
+Reduced Buffer,XL-Synthetic_10_B__xlsx_large__lsb1.bmp,extended_xl,XLSX,1,/home/kali/Desktop/stego_dataset_expanded/stego_core_combined/XL-Synthetic_10_B__xlsx_large__lsb1.bmp,ZIP,Unknown,0,1,0,0
+Original,XL-Synthetic_10_B__xlsx_large__lsb2.bmp,extended_xl,XLSX,2,/home/kali/Desktop/stego_dataset_expanded/stego_core_combined/XL-Synthetic_10_B__xlsx_large__lsb2.bmp,XLSX,Correct,1,0,0,0
+JPEG Compression,XL-Synthetic_10_B__xlsx_large__lsb2.bmp,extended_xl,XLSX,2,/home/kali/Desktop/stego_dataset_expanded/robustness_test/XL-Synthetic_10_B__xlsx_large__lsb2__jpeg_q85.jpg,UNKNOWN,Unknown,0,1,0,0
+Resizing,XL-Synthetic_10_B__xlsx_large__lsb2.bmp,extended_xl,XLSX,2,/home/kali/Desktop/stego_dataset_expanded/robustness_test/XL-Synthetic_10_B__xlsx_large__lsb2__resize_90.png,UNKNOWN,Unknown,0,1,0,0
+Slight Noise,XL-Synthetic_10_B__xlsx_large__lsb2.bmp,extended_xl,XLSX,2,/home/kali/Desktop/stego_dataset_expanded/robustness_test/XL-Synthetic_10_B__xlsx_large__lsb2__noise.png,UNKNOWN,Unknown,0,1,0,0
+Wrong LSB Depth,XL-Synthetic_10_B__xlsx_large__lsb2.bmp,extended_xl,XLSX,2,/home/kali/Desktop/stego_dataset_expanded/stego_core_combined/XL-Synthetic_10_B__xlsx_large__lsb2.bmp,UNKNOWN,Unknown,0,1,0,0
+Reduced Buffer,XL-Synthetic_10_B__xlsx_large__lsb2.bmp,extended_xl,XLSX,2,/home/kali/Desktop/stego_dataset_expanded/stego_core_combined/XL-Synthetic_10_B__xlsx_large__lsb2.bmp,ZIP,Unknown,0,1,0,0
+Original,XL-Synthetic_10_B__xlsx_large__lsb3.bmp,extended_xl,XLSX,3,/home/kali/Desktop/stego_dataset_expanded/stego_core_combined/XL-Synthetic_10_B__xlsx_large__lsb3.bmp,XLSX,Correct,1,0,0,0
+JPEG Compression,XL-Synthetic_10_B__xlsx_large__lsb3.bmp,extended_xl,XLSX,3,/home/kali/Desktop/stego_dataset_expanded/robustness_test/XL-Synthetic_10_B__xlsx_large__lsb3__jpeg_q85.jpg,UNKNOWN,Unknown,0,1,0,0
+Resizing,XL-Synthetic_10_B__xlsx_large__lsb3.bmp,extended_xl,XLSX,3,/home/kali/Desktop/stego_dataset_expanded/robustness_test/XL-Synthetic_10_B__xlsx_large__lsb3__resize_90.png,UNKNOWN,Unknown,0,1,0,0
+Slight Noise,XL-Synthetic_10_B__xlsx_large__lsb3.bmp,extended_xl,XLSX,3,/home/kali/Desktop/stego_dataset_expanded/robustness_test/XL-Synthetic_10_B__xlsx_large__lsb3__noise.png,UNKNOWN,Unknown,0,1,0,0
+Wrong LSB Depth,XL-Synthetic_10_B__xlsx_large__lsb3.bmp,extended_xl,XLSX,3,/home/kali/Desktop/stego_dataset_expanded/stego_core_combined/XL-Synthetic_10_B__xlsx_large__lsb3.bmp,UNKNOWN,Unknown,0,1,0,0
+Reduced Buffer,XL-Synthetic_10_B__xlsx_large__lsb3.bmp,extended_xl,XLSX,3,/home/kali/Desktop/stego_dataset_expanded/stego_core_combined/XL-Synthetic_10_B__xlsx_large__lsb3.bmp,ZIP,Unknown,0,1,0,0

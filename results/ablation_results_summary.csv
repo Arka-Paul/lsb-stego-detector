@@ -1,0 +1,5 @@
+configuration,correct,total,accuracy_percent
+full,1848,1848,100.00
+no_deinterleaving,474,1848,25.65
+no_buffer,924,1848,50.00
+no_markers,924,1848,50.00

@@ -1,0 +1,7 @@
+scenario,Samples,Correct,Unknown,Misclassified,Error,Accuracy
+JPEG Compression,36,0,36,0,0,0.00%
+Original,36,36,0,0,0,100.00%
+Reduced Buffer,36,18,18,0,0,50.00%
+Resizing,36,0,36,0,0,0.00%
+Slight Noise,36,0,36,0,0,0.00%
+Wrong LSB Depth,36,0,36,0,0,0.00%
