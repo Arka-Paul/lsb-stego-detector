@@ -1,251 +1,501 @@
-# LSB Stego File Type Detector
+# LSB Stego Detector: Bitstream Reconstruction for File-Type Attribution
 
-A Python-based digital forensics tool for detecting and identifying hidden file types embedded within PNG and BMP images using Least Significant Bit (LSB) steganography.
+This repository contains the source code, experimental scripts, payload files, and result outputs for the project:
 
----
+**Decoding Hidden Structures: Bitstream Reconstruction for File-Type Attribution in LSB Steganography**
 
-## Overview
+The project implements a deterministic reconstruction-based forensic pipeline for identifying concealed file types embedded in images using Least Significant Bit (LSB) steganography. Unlike conventional tools that inspect the image file as a contiguous byte stream, this method reconstructs the hidden LSB bitstream first and then applies signature-based file-type attribution.
 
-Steganography enables covert communication by hiding data within digital media. Among various techniques, **Least Significant Bit (LSB)** steganography is widely used due to its simplicity and minimal visual distortion.
-
-This project focuses on **steganalysis**, specifically:
-
-> Detecting and identifying the **type of hidden payload** (e.g., PDF, DOCX, XLSX, PPTX, RTF, EXE) embedded inside stego images.
-
-Unlike traditional approaches that only detect the presence of hidden data, this tool performs **payload classification**, making it highly valuable for **digital forensics and cybersecurity investigations**.
+The repository is intended to support reproducibility of the reported experiments, including detection accuracy, payload-level attribution, false-positive analysis, ablation testing, robustness/safe-failure analysis, runtime analysis, and comparison against existing forensic tools.
 
 ---
 
-## How LSB Steganography Works
+## 1. Scope of the Method
 
-The Least Significant Bit technique embeds hidden data by modifying the lowest bit of pixel values.
+The proposed detector is designed for **controlled StegoLSB-compatible sequential embedding conditions**.
 
-![LSB Example](docs/images/lsb_embedding_example.png)
+The method assumes:
 
-Even small modifications allow data to be stored without noticeable visual change, making detection challenging.
+* lossless image carriers, primarily PNG and BMP;
+* sequential LSB embedding;
+* known or user-specified LSB depth;
+* payloads embedded without encryption or pre-embedding obfuscation;
+* no destructive post-processing such as JPEG compression, resizing, or additive noise.
 
----
-
-## Key Features
-
-* Detection of hidden file types from stego images
-* Supports PNG and BMP formats
-* Identifies:
-
-  * PDF
-  * DOCX / XLSX / PPTX
-  * RTF
-  * EXE
-* Multi-LSB support (1–3 bits)
-* GUI-based interface (Tkinter)
-* Cross-platform compatibility (Windows & Linux)
-* Batch evaluation capability
+The method should therefore be interpreted as a **forensic file-type attribution framework under a compatible embedding model**, not as a universal steganography detector.
 
 ---
 
-## Detection Pipeline
-
-The system follows a structured steganalysis workflow:
-
-![Detection Pipeline](docs/images/detection_flow_diagram.png)
-
-### Core Steps
-
-1. Extract pixel data from the image
-2. Reconstruct hidden bitstream using LSB extraction
-3. Skip metadata tag region
-4. Analyse extracted payload using:
-
-   * Magic byte signatures
-   * Internal markers (ZIP-based Office formats)
-5. Classify detected file type
-
----
-
-## Project Structure
+## 2. Repository Structure
 
 ```text
-src/                  Main GUI detector
-scripts/              Evaluation and testing scripts
-dataset/
-  ├── clean/          Clean images (false positive testing)
-  ├── stego/          Stego images with embedded payloads
-  ├── payloads/       Original embedded files
-  └── results/        Ground truth and output CSV files
-docs/images/          Diagrams and visual explanations
-run.py                Application entry point
+lsb-stego-detector/
+├── dataset/
+│   └── sample_payloads/
+│       ├── docx/
+│       ├── exe/
+│       ├── pdf/
+│       ├── pptx/
+│       ├── rtf/
+│       └── xlsx/
+│
+├── docs/
+│   ├── reproduction_protocol.md
+│   └── tool_versions.md
+│
+├── results/
+│   ├── ablation_results_per_file.csv
+│   ├── ablation_results_summary.csv
+│   ├── confusion_matrix.csv
+│   ├── detection_results_combined.csv
+│   ├── embedding_plan_combined.csv
+│   ├── false_positive_analysis.csv
+│   ├── false_positive_clean_results.csv
+│   ├── robustness_results_per_file.csv
+│   ├── robustness_selected_subset.csv
+│   ├── robustness_table.csv
+│   ├── runtime_per_file.csv
+│   ├── runtime_summary.csv
+│   ├── stego_manifest_combined.csv
+│   ├── table3_per_payload.csv
+│   └── table_category_analysis.csv
+│
+├── scripts/
+│   ├── build_combined_embedding_plan.py
+│   ├── build_stego_manifest_combined.py
+│   ├── compare_baseline_tools_combined.py
+│   ├── detector_ablation.py
+│   ├── detector_cli.py
+│   ├── main.py
+│   ├── make_confusion_matrix.py
+│   ├── make_false_positive_table.py
+│   ├── run_ablation_study.py
+│   ├── run_detection_combined.py
+│   ├── run_embedding_combined.py
+│   ├── run_false_positive_clean.py
+│   ├── run_robustness_analysis.py
+│   └── run_runtime_analysis.py
+│
+├── README.md
+├── requirements.txt
+└── .gitignore
 ```
 
 ---
 
-## Installation
+## 3. Dataset and Payload Composition
+
+The evaluation uses a controlled combined dataset generated from:
+
+* **46 cover images**:
+
+  * 16 controlled core images;
+  * 30 extended XL synthetic images.
+* **6 payload types**:
+
+  * PDF;
+  * DOCX;
+  * XLSX;
+  * PPTX;
+  * RTF;
+  * EXE.
+* **3 payload size classes**:
+
+  * small;
+  * medium;
+  * large.
+* **3 LSB embedding depths**:
+
+  * 1-bit;
+  * 2-bit;
+  * 3-bit.
+
+Under ideal conditions, the full planned embedding space is:
+
+```text
+46 covers × 6 payload types × 3 payload sizes × 3 LSB depths = 2484 planned cases
+```
+
+The final valid stego dataset contains:
+
+```text
+1848 valid stego-images
+```
+
+The reduction from 2484 planned cases to 1848 valid cases is due to:
+
+1. carrier capacity limitations, where larger payloads exceeded available embedding capacity for some image/depth combinations;
+2. a StegoLSB implementation limitation affecting greyscale PNG images, where scalar pixel representation can cause embedding failure.
+
+Only successfully generated stego-images were included in the final evaluation.
+
+---
+
+## 4. Payload Files
+
+The folder `dataset/sample_payloads/` contains the benign synthetic payload files used in the experiments. Payloads are organised by file type and size class.
+
+The EXE files are included only as harmless test binaries for signature-based attribution experiments. They are not malware.
+
+The EXE payload SHA-256 hashes are:
+
+```text
+medium/P06.exe:
+8dbba6af13993a1c9eb868ded6a68101c036f025aefe055ac98932ebe6233366
+
+large/P06.exe:
+68dce1774763ef5c2ed853d26b6d0a9d1f9e70cb83f08b7e5c28069aa0b92bb3
+
+small/P06.exe:
+e99c275bc74742ccaf781942ee66a06e6da063ceacb9165d61ee67fc84b3558d
+```
+
+---
+
+## 5. Proposed Detector
+
+The main detector is provided in two forms:
+
+### GUI version
+
+```text
+scripts/main.py
+```
+
+This provides a Tkinter-based graphical interface for selecting images, specifying LSB depth values, and viewing detected file types and reconstructed header bytes.
+
+### Command-line version
+
+```text
+scripts/detector_cli.py
+```
+
+Example usage:
 
 ```bash
-git clone https://github.com/Arka-Paul/lsb-stego-detector.git
-cd lsb-stego-detector
+python3 scripts/detector_cli.py <image_path> <lsb_depth>
+```
+
+Example:
+
+```bash
+python3 scripts/detector_cli.py stego_core_combined/Flat-Color_1_S__pdf_small__lsb1.bmp 1
+```
+
+Expected output:
+
+```text
+PDF
+```
+
+The command-line detector:
+
+1. opens the input image;
+2. flattens pixel/channel values;
+3. reconstructs LSB bitstreams using StegoLSB-compatible deinterleaving;
+4. removes the StegoLSB length-tag prefix;
+5. checks reconstructed bytes for file signatures;
+6. returns one of:
+
+```text
+PDF, DOCX, XLSX, PPTX, RTF, EXE, ZIP, UNKNOWN, ERROR
+```
+
+---
+
+## 6. Installation
+
+The code was developed and tested using Python 3 on Linux/Kali Linux.
+
+Install Python dependencies with:
+
+```bash
 pip install -r requirements.txt
 ```
 
----
+The following external forensic tools were used for comparison experiments:
 
-## Running the Tool
-
-Launch the GUI:
-
-```bash
-python run.py
+```text
+zsteg
+binwalk
+foremost
+exiftool
 ```
 
-### Usage
+On Kali Linux, they can typically be installed using:
 
-1. Select stego images
-2. Enter LSB depth (1–3)
-3. Run detection
-4. View results in GUI table
+```bash
+sudo apt update
+sudo apt install binwalk foremost exiftool
+gem install zsteg
+```
 
----
+Tool versions used in the experiments should be documented in:
 
-## Dataset Description
-
-The dataset is designed to simulate realistic steganographic scenarios:
-
-* Image Types:
-
-  * Flat Color
-  * Mixed Content
-  * Noisy
-  * Photographic
-  * Transparency
-
-* Payload Types:
-
-  * DOCX
-  * PDF
-  * XLSX
-  * PPTX
-  * RTF
-
-* LSB Depths:
-
-  * 1-bit
-  * 2-bit
-  * 3-bit
-
-This ensures robust evaluation across different embedding conditions.
+```text
+docs/tool_versions.md
+```
 
 ---
 
-## Evaluation Scripts
+## 7. Reproducing the Main Results
 
-Located in `scripts/`:
+The final results reported in the manuscript are based on the combined dataset workflow.
 
-### 1. evaluate_detector.py
+### Step 1: Build the combined embedding plan
 
-* Computes detection accuracy
-* Provides breakdown by:
+```bash
+python3 scripts/build_combined_embedding_plan.py
+```
 
-  * File type
-  * LSB depth
+This generates:
 
-### 2. test_false_positives.py
+```text
+results/embedding_plan_combined.csv
+```
 
-* Evaluates behaviour on clean images
-* Measures false detection rate
+### Step 2: Generate stego-images
+
+```bash
+python3 scripts/run_embedding_combined.py
+```
+
+This embeds the payload files into compatible cover images using the planned configurations.
+
+### Step 3: Build the stego manifest
+
+```bash
+python3 scripts/build_stego_manifest_combined.py
+```
+
+This generates:
+
+```text
+results/stego_manifest_combined.csv
+```
+
+### Step 4: Run the proposed detector
+
+```bash
+python3 scripts/run_detection_combined.py
+```
+
+This generates:
+
+```text
+results/detection_results_combined.csv
+```
+
+### Step 5: Generate confusion matrix
+
+```bash
+python3 scripts/make_confusion_matrix.py
+```
+
+This generates:
+
+```text
+results/confusion_matrix.csv
+```
+
+### Step 6: Run false-positive analysis on clean images
+
+```bash
+python3 scripts/run_false_positive_clean.py
+```
+
+This generates:
+
+```text
+results/false_positive_clean_results.csv
+results/false_positive_analysis.csv
+```
+
+### Step 7: Run ablation study
+
+```bash
+python3 scripts/run_ablation_study.py
+```
+
+This generates:
+
+```text
+results/ablation_results_per_file.csv
+results/ablation_results_summary.csv
+```
+
+### Step 8: Run robustness / safe-failure analysis
+
+```bash
+python3 scripts/run_robustness_analysis.py
+```
+
+This generates:
+
+```text
+results/robustness_results_per_file.csv
+results/robustness_selected_subset.csv
+results/robustness_table.csv
+```
+
+### Step 9: Run runtime analysis
+
+```bash
+python3 scripts/run_runtime_analysis.py
+```
+
+This generates:
+
+```text
+results/runtime_per_file.csv
+results/runtime_summary.csv
+```
+
+### Step 10: Run baseline tool comparison
+
+```bash
+python3 scripts/compare_baseline_tools_combined.py
+```
+
+This compares the proposed method against:
+
+```text
+zsteg
+binwalk
+foremost
+exiftool
+```
 
 ---
 
-## Tool Comparison Results
+## 8. Summary of Main Experimental Results
 
-The detector was evaluated against common steganalysis tools.
+### Proposed method
 
-![Tool Comparison](docs/images/tool_comparison_results.png)
+```text
+Total stego samples: 1848
+Correct attributions: 1848
+Accuracy: 100.00%
+```
 
-### Summary
+### Payload-level performance
 
-| Tool      | Detection Accuracy |
-| --------- | ------------------ |
-| This Tool | 100%               |
-| zsteg     | 16.30%             |
-| binwalk   | 0%                 |
-| foremost  | 0%                 |
-| exiftool  | 0%                 |
+```text
+PDF:  308/308
+DOCX: 308/308
+XLSX: 308/308
+PPTX: 308/308
+RTF:  308/308
+EXE:  308/308
+```
 
-This demonstrates the effectiveness of targeted payload classification compared to general-purpose tools.
+### Embedding-depth performance
 
----
+```text
+1-bit LSB: 474 samples, 100.00%
+2-bit LSB: 624 samples, 100.00%
+3-bit LSB: 750 samples, 100.00%
+```
 
-## False Positive Analysis
+### Clean-image false-positive analysis
 
-The tool was tested on clean images to evaluate reliability.
+```text
+Clean images: 46
+LSB depths tested: 3
+Total clean-image test cases: 138
+False-positive events: 3
+Overall false-positive rate: 2.17%
+```
 
-![False Positives](docs/images/false_positive_rate.png)
+### Ablation study
 
-* True Negatives: **93.75%**
-* False Positives: **6.25%**
+```text
+Full system:                 1848/1848, 100.00%
+Without deinterleaving:       474/1848, 25.65%
+Reduced buffer:               924/1848, 50.00%
+Without internal markers:     924/1848, 50.00%
+```
 
-This indicates strong reliability with minimal incorrect detections.
+### Runtime
 
----
-
-## Example Output
-
-The tool generates:
-
-* Predicted file type
-* Extracted header (hex format)
-* Accuracy metrics (CSV output)
-* False positive statistics
-
----
-
-## Limitations
-
-* Designed primarily for LSB-based steganography
-* Reduced effectiveness against:
-
-  * Encrypted payloads
-  * Preprocessed/obfuscated embedding (e.g., OpenPuff)
-* Requires correct LSB assumption for optimal detection
-
----
-
-## Research Contribution
-
-This project extends traditional steganalysis by introducing:
-
-> **Automated classification of hidden payload types within stego images**
-
-This provides practical value for:
-
-* Digital forensics investigations
-* Malware detection
-* Covert communication analysis
+```text
+Total images processed: 1848
+Total runtime: 10169.86 s
+Average runtime per image: 5.50 s
+Fastest successful detection: 0.17 s
+Slowest successful detection: 120.60 s
+```
 
 ---
 
-## Future Work
+## 9. Baseline Tool Comparison
 
-* Integration of entropy-based detection
-* Machine learning classification models
-* Support for encrypted payload identification
-* Expansion to audio/video steganography
+The comparison tools operate under different assumptions:
+
+* `binwalk` scans raw byte streams for contiguous signatures;
+* `foremost` performs header/footer-based file carving;
+* `exiftool` inspects metadata fields;
+* `zsteg` performs LSB-oriented heuristic extraction.
+
+These tools do not perform the same deterministic StegoLSB-compatible bitstream reconstruction used in the proposed method.
+
+In the evaluated dataset:
+
+```text
+Proposed method: 1848/1848 (100.00%)
+zsteg:            906/1848 (49.03%)
+binwalk:            0/1848 (0.00%)
+foremost:           0/1848 (0.00%)
+exiftool:           0/1848 (0.00%)
+```
+
+The result demonstrates that direct raw-byte inspection and metadata analysis are insufficient for file-type attribution when the payload is dispersed across LSB pixel channels. The proposed method reconstructs the hidden byte stream before applying file-type attribution.
 
 ---
 
-## License
+## 10. Robustness and Safe-Failure Behaviour
 
-This project is licensed under the MIT License.
+The robustness analysis evaluated a stratified subset of 36 stego-images under:
+
+* JPEG compression;
+* resizing;
+* additive noise;
+* wrong LSB depth;
+* reduced extraction buffer.
+
+Transformations that modify pixel values resulted in failed reconstruction and outputs classified as `UNKNOWN`. These results should be interpreted as **safe failure under tested perturbations**, not broad robustness to transformed stego-images.
+
+The method depends on preserving the original lossless carrier representation.
 
 ---
 
-## Author
+## 11. Known Limitations
 
-**Arka Paul**
-BSc (Hons) Computer Science (Cyber Security)
-University of Greenwich
+The method has the following limitations:
+
+1. It assumes a StegoLSB-compatible sequential embedding model.
+2. It requires the correct or tested LSB depth.
+3. It depends on lossless image representations.
+4. It does not recover encrypted, compressed, or obfuscated payloads if recognisable file signatures are absent.
+5. It is not designed for randomised pixel traversal, adaptive embedding, transform-domain steganography, or lossy JPEG-domain embedding.
+6. The clean-image evaluation is limited and should be expanded for stronger forensic reliability estimation.
 
 ---
 
-## Disclaimer
+## 12. Data Availability
 
-This tool is intended for educational and research purposes only.
+This repository provides:
+
+* source code used for detection and evaluation;
+* payload files used for controlled embedding experiments;
+* result CSV files underlying the reported tables;
+* scripts for detection, ablation, robustness, runtime, and baseline comparison;
+* documentation for reproduction and tool versions.
+
+Where full generated stego-image sets are not included due to repository size constraints, they can be regenerated from the provided payloads, scripts, and manifests.
+
+---
+
+## 14. Licence
+
+Please refer to the repository licence file for usage terms.
