@@ -1,12 +1,12 @@
 # LSB Stego Detector: Bitstream Reconstruction for File-Type Attribution
 
-This repository contains the source code, experimental scripts, payload files, and result outputs for the project:
+This repository contains the source code, experimental scripts, payload files, result outputs, and reproducibility documentation for the project:
 
 **Decoding Hidden Structures: Bitstream Reconstruction for File-Type Attribution in LSB Steganography**
 
-The project implements a deterministic reconstruction-based forensic pipeline for identifying concealed file types embedded in images using Least Significant Bit (LSB) steganography. Unlike conventional tools that inspect the image file as a contiguous byte stream, this method reconstructs the hidden LSB bitstream first and then applies signature-based file-type attribution.
+The project implements a deterministic reconstruction-based forensic pipeline for identifying concealed file types embedded in images using Least Significant Bit (LSB) steganography. Unlike conventional forensic tools that inspect the image file as a contiguous byte stream, this method reconstructs the hidden LSB bitstream first and then applies signature-based file-type attribution.
 
-The repository is intended to support reproducibility of the reported experiments, including detection accuracy, payload-level attribution, false-positive analysis, ablation testing, robustness/safe-failure analysis, runtime analysis, and comparison against existing forensic tools.
+The repository supports verification and reproduction of the reported experiments, including detection accuracy, payload-level attribution, false-positive analysis, ablation testing, robustness/safe-failure analysis, runtime analysis, and comparison against existing forensic tools.
 
 ---
 
@@ -31,13 +31,15 @@ The method should therefore be interpreted as a **forensic file-type attribution
 ```text
 lsb-stego-detector/
 ├── dataset/
-│   └── sample_payloads/
-│       ├── docx/
-│       ├── exe/
-│       ├── pdf/
-│       ├── pptx/
-│       ├── rtf/
-│       └── xlsx/
+│   ├── sample_covers/
+│   ├── sample_payloads/
+│   │   ├── docx/
+│   │   ├── exe/
+│   │   ├── pdf/
+│   │   ├── pptx/
+│   │   ├── rtf/
+│   │   └── xlsx/
+│   └── sample_stego/
 │
 ├── docs/
 │   ├── reproduction_protocol.md
@@ -47,10 +49,13 @@ lsb-stego-detector/
 │   ├── ablation_results_per_file.csv
 │   ├── ablation_results_summary.csv
 │   ├── confusion_matrix.csv
+│   ├── cover_capacity_audit.csv
+│   ├── covers_metadata.csv
 │   ├── detection_results_combined.csv
 │   ├── embedding_plan_combined.csv
 │   ├── false_positive_analysis.csv
 │   ├── false_positive_clean_results.csv
+│   ├── payload_validation.txt
 │   ├── robustness_results_per_file.csv
 │   ├── robustness_selected_subset.csv
 │   ├── robustness_table.csv
@@ -69,6 +74,8 @@ lsb-stego-detector/
 │   ├── main.py
 │   ├── make_confusion_matrix.py
 │   ├── make_false_positive_table.py
+│   ├── make_table3_per_payload.py
+│   ├── make_table_category.py
 │   ├── run_ablation_study.py
 │   ├── run_detection_combined.py
 │   ├── run_embedding_combined.py
@@ -85,13 +92,13 @@ lsb-stego-detector/
 
 ## 3. Dataset and Payload Composition
 
-The evaluation uses a controlled combined dataset generated from:
+The reported evaluation uses a controlled combined dataset generated from:
 
-* **46 cover images**:
+* **46 cover images**
 
   * 16 controlled core images;
   * 30 extended XL synthetic images.
-* **6 payload types**:
+* **6 payload types**
 
   * PDF;
   * DOCX;
@@ -99,18 +106,18 @@ The evaluation uses a controlled combined dataset generated from:
   * PPTX;
   * RTF;
   * EXE.
-* **3 payload size classes**:
+* **3 payload size classes**
 
   * small;
   * medium;
   * large.
-* **3 LSB embedding depths**:
+* **3 LSB embedding depths**
 
   * 1-bit;
   * 2-bit;
   * 3-bit.
 
-Under ideal conditions, the full planned embedding space is:
+Under ideal execution conditions, the full planned embedding space is:
 
 ```text
 46 covers × 6 payload types × 3 payload sizes × 3 LSB depths = 2484 planned cases
@@ -124,14 +131,32 @@ The final valid stego dataset contains:
 
 The reduction from 2484 planned cases to 1848 valid cases is due to:
 
-1. carrier capacity limitations, where larger payloads exceeded available embedding capacity for some image/depth combinations;
+1. carrier-capacity limitations, where larger payloads exceeded available embedding capacity for some image/depth combinations;
 2. a StegoLSB implementation limitation affecting greyscale PNG images, where scalar pixel representation can cause embedding failure.
 
 Only successfully generated stego-images were included in the final evaluation.
 
 ---
 
-## 4. Payload Files
+## 4. Repository Data Availability
+
+This GitHub repository contains:
+
+* source code used for detection and evaluation;
+* payload files used for controlled embedding experiments;
+* result CSV files underlying the reported manuscript tables;
+* sample cover images;
+* sample stego-images;
+* reproducibility documentation;
+* tool and environment version documentation.
+
+The repository currently includes a **sample image subset** for demonstration and testing. The complete generated stego-image dataset is not stored directly in the GitHub repository due to repository-size considerations. The full dataset can be regenerated using the provided payloads, scripts, and manifests when the full carrier image set is placed in the expected directory structure.
+
+Where a separate external dataset archive is available, the corresponding DOI or repository link should be cited in the manuscript Data Availability Statement.
+
+---
+
+## 5. Payload Files
 
 The folder `dataset/sample_payloads/` contains the benign synthetic payload files used in the experiments. Payloads are organised by file type and size class.
 
@@ -152,9 +177,9 @@ e99c275bc74742ccaf781942ee66a06e6da063ceacb9165d61ee67fc84b3558d
 
 ---
 
-## 5. Proposed Detector
+## 6. Proposed Detector
 
-The main detector is provided in two forms:
+The main detector is provided in two forms.
 
 ### GUI version
 
@@ -179,13 +204,7 @@ python3 scripts/detector_cli.py <image_path> <lsb_depth>
 Example:
 
 ```bash
-python3 scripts/detector_cli.py stego_core_combined/Flat-Color_1_S__pdf_small__lsb1.bmp 1
-```
-
-Expected output:
-
-```text
-PDF
+python3 scripts/detector_cli.py dataset/sample_stego/<sample_stego_image>.bmp 1
 ```
 
 The command-line detector:
@@ -203,9 +222,9 @@ PDF, DOCX, XLSX, PPTX, RTF, EXE, ZIP, UNKNOWN, ERROR
 
 ---
 
-## 6. Installation
+## 7. Installation
 
-The code was developed and tested using Python 3 on Linux/Kali Linux.
+The code was developed and tested using Python 3 on Kali Linux.
 
 Install Python dependencies with:
 
@@ -230,7 +249,7 @@ sudo apt install binwalk foremost exiftool
 gem install zsteg
 ```
 
-Tool versions used in the experiments should be documented in:
+The exact versions used in the reported experiments are documented in:
 
 ```text
 docs/tool_versions.md
@@ -238,9 +257,13 @@ docs/tool_versions.md
 
 ---
 
-## 7. Reproducing the Main Results
+## 8. Reproducing the Main Results
 
-The final results reported in the manuscript are based on the combined dataset workflow.
+The final results reported in the manuscript are based on the combined dataset workflow. A more detailed protocol is available in:
+
+```text
+docs/reproduction_protocol.md
+```
 
 ### Step 1: Build the combined embedding plan
 
@@ -366,9 +389,18 @@ foremost
 exiftool
 ```
 
+Expected output files:
+
+```text
+results/tool_comparison_per_file.csv
+results/tool_comparison_summary.csv
+```
+
+If these files are not present in the repository, they can be regenerated using the command above when the required stego-image dataset is available locally.
+
 ---
 
-## 8. Summary of Main Experimental Results
+## 9. Summary of Main Experimental Results
 
 ### Proposed method
 
@@ -428,7 +460,7 @@ Slowest successful detection: 120.60 s
 
 ---
 
-## 9. Baseline Tool Comparison
+## 10. Baseline Tool Comparison
 
 The comparison tools operate under different assumptions:
 
@@ -453,7 +485,7 @@ The result demonstrates that direct raw-byte inspection and metadata analysis ar
 
 ---
 
-## 10. Robustness and Safe-Failure Behaviour
+## 11. Robustness and Safe-Failure Behaviour
 
 The robustness analysis evaluated a stratified subset of 36 stego-images under:
 
@@ -469,7 +501,7 @@ The method depends on preserving the original lossless carrier representation.
 
 ---
 
-## 11. Known Limitations
+## 12. Known Limitations
 
 The method has the following limitations:
 
@@ -482,20 +514,6 @@ The method has the following limitations:
 
 ---
 
-## 12. Data Availability
-
-This repository provides:
-
-* source code used for detection and evaluation;
-* payload files used for controlled embedding experiments;
-* result CSV files underlying the reported tables;
-* scripts for detection, ablation, robustness, runtime, and baseline comparison;
-* documentation for reproduction and tool versions.
-
-Where full generated stego-image sets are not included due to repository size constraints, they can be regenerated from the provided payloads, scripts, and manifests.
-
----
-
-## 14. Licence
+## 13. Licence
 
 Please refer to the repository licence file for usage terms.
