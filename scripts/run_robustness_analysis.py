@@ -19,6 +19,16 @@ OUTPUT_PER_FILE = RESULTS_DIR / "robustness_results_per_file.csv"
 OUTPUT_SUMMARY = RESULTS_DIR / "robustness_table.csv"
 OUTPUT_SELECTED = RESULTS_DIR / "robustness_selected_subset.csv"
 
+# -------------------------------------------------------------------
+# Reproducibility configuration
+# -------------------------------------------------------------------
+RANDOM_SEED = 42
+RNG = np.random.default_rng(RANDOM_SEED)
+
+JPEG_QUALITY = 85
+RESIZE_SCALE = 0.9
+NOISE_SIGMA = 8.0
+
 import sys
 sys.path.insert(0, str(ROOT / "scripts"))
 from detector_cli import detect_file_type as detect_full
@@ -35,11 +45,17 @@ def choose_wrong_lsb(true_lsb: int) -> int:
     raise ValueError(f"Unexpected LSB value: {true_lsb}")
 
 
-def add_gaussian_noise_safe(image_bgr: np.ndarray, sigma: float = 8.0) -> np.ndarray:
+def add_gaussian_noise_safe(image_bgr: np.ndarray, sigma: float = NOISE_SIGMA) -> np.ndarray:
+    """
+    Adds deterministic Gaussian noise to the image using a fixed random seed.
+
+    The global RNG is initialised once with RANDOM_SEED, so rerunning the script
+    on the same selected subset produces the same noise sequence.
+    """
     if image_bgr is None:
         raise ValueError("OpenCV failed to load image")
 
-    noise = np.random.normal(0, sigma, image_bgr.shape).astype(np.float32)
+    noise = RNG.normal(0, sigma, image_bgr.shape).astype(np.float32)
     noisy = image_bgr.astype(np.float32) + noise
     noisy = np.clip(noisy, 0, 255).astype(np.uint8)
     return noisy
@@ -105,19 +121,19 @@ def build_subset(manifest_path: Path) -> list[dict]:
     return selected
 
 
-def save_as_jpeg(src: Path, dst: Path, quality: int = 85):
+def save_as_jpeg(src: Path, dst: Path, quality: int = JPEG_QUALITY):
     img = Image.open(src).convert("RGB")
     img.save(dst, "JPEG", quality=quality)
 
 
-def save_resized_png(src: Path, dst: Path, scale: float = 0.9):
+def save_resized_png(src: Path, dst: Path, scale: float = RESIZE_SCALE):
     img = Image.open(src).convert("RGB")
     new_size = (max(1, int(img.width * scale)), max(1, int(img.height * scale)))
     img = img.resize(new_size)
     img.save(dst, "PNG")
 
 
-def save_noisy_png(src: Path, dst: Path, sigma: float = 8.0):
+def save_noisy_png(src: Path, dst: Path, sigma: float = NOISE_SIGMA):
     img_bgr = cv2.imread(str(src), cv2.IMREAD_COLOR)
     noisy = add_gaussian_noise_safe(img_bgr, sigma=sigma)
     cv2.imwrite(str(dst), noisy)
@@ -163,6 +179,11 @@ def run_robustness():
     # Save and print the exact 36 selected images
     selected_rows = []
     print("\n==================== SELECTED ROBUSTNESS SUBSET ====================")
+    print(f"Random seed for noise generation: {RANDOM_SEED}")
+    print(f"JPEG quality: {JPEG_QUALITY}")
+    print(f"Resize scale: {RESIZE_SCALE}")
+    print(f"Gaussian noise sigma: {NOISE_SIGMA}")
+
     for i, row in enumerate(subset, start=1):
         selected_rows.append({
             "index": i,
@@ -172,6 +193,10 @@ def run_robustness():
             "lsb": row["lsb"],
             "stego_filename": row["stego_filename"],
             "cover_filename": row["cover_filename"],
+            "random_seed": RANDOM_SEED,
+            "jpeg_quality": JPEG_QUALITY,
+            "resize_scale": RESIZE_SCALE,
+            "noise_sigma": NOISE_SIGMA,
         })
         print(
             f"[{i:02d}] subset={row['subset']:<11} "
@@ -199,9 +224,9 @@ def run_robustness():
         resize_path = ROBUST_DIR / f"{stem}__resize_90.png"
         noise_path = ROBUST_DIR / f"{stem}__noise.png"
 
-        save_as_jpeg(src, jpeg_path, quality=85)
-        save_resized_png(src, resize_path, scale=0.9)
-        save_noisy_png(src, noise_path, sigma=8.0)
+        save_as_jpeg(src, jpeg_path, quality=JPEG_QUALITY)
+        save_resized_png(src, resize_path, scale=RESIZE_SCALE)
+        save_noisy_png(src, noise_path, sigma=NOISE_SIGMA)
 
         scenarios = {
             "Original": src,
@@ -233,6 +258,10 @@ def run_robustness():
                 "unknown": 1 if outcome == "Unknown" else 0,
                 "misclassified": 1 if outcome == "Misclassified" else 0,
                 "error": 1 if outcome == "Error" else 0,
+                "random_seed": RANDOM_SEED if scenario_name == "Slight Noise" else "",
+                "jpeg_quality": JPEG_QUALITY if scenario_name == "JPEG Compression" else "",
+                "resize_scale": RESIZE_SCALE if scenario_name == "Resizing" else "",
+                "noise_sigma": NOISE_SIGMA if scenario_name == "Slight Noise" else "",
             })
 
     df = pd.DataFrame(results)
@@ -250,10 +279,13 @@ def run_robustness():
         .reset_index()
     )
 
-    summary["Accuracy"] = (summary["Correct"] / summary["Samples"] * 100).map(lambda x: f"{x:.2f}%")
+    summary["Accuracy"] = (
+        summary["Correct"] / summary["Samples"] * 100
+    ).map(lambda x: f"{x:.2f}%")
+
     summary.to_csv(OUTPUT_SUMMARY, index=False)
 
-    print("\n==================== ROBUSTNESS SUMMARY ====================")
+    print("\n==================== ROBUSTNESS / SAFE-FAILURE SUMMARY ====================")
     print(summary.to_string(index=False))
     print(f"\nSaved per-file results : {OUTPUT_PER_FILE}")
     print(f"Saved summary table    : {OUTPUT_SUMMARY}")
