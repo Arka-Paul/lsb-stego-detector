@@ -1,0 +1,12 @@
+metric,value
+images_tested,1851
+total_lsb_tests,5553
+expected_depth_tests,1848
+expected_depth_correct,1848
+expected_depth_failed,0
+expected_depth_accuracy_percent,100.00
+wrong_depth_tests,3705
+wrong_depth_unknown,3702
+wrong_depth_false_attributions,3
+processing_errors,0
+elapsed_seconds,25596.61
