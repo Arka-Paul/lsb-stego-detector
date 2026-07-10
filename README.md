@@ -4,9 +4,9 @@ This repository contains the source code, experimental scripts, payload files, r
 
 **Decoding Hidden Structures: Bitstream Reconstruction for File-Type Attribution in LSB Steganography**
 
-The project implements a deterministic reconstruction-based forensic pipeline for identifying concealed file types embedded in images using Least Significant Bit (LSB) steganography. Unlike conventional forensic tools that inspect the image file as a contiguous byte stream, this method reconstructs the hidden LSB bitstream first and then applies signature-based file-type attribution.
+The project implements a deterministic reconstruction-based forensic pipeline for identifying concealed file types embedded in images using Least Significant Bit (LSB) steganography. Unlike conventional forensic tools that inspect the image file as a contiguous byte stream, this method reconstructs the hidden LSB bitstream first and then applies structurally validated file-type attribution. The updated attribution stage checks both primary file signatures and format-specific structure, including PDF trailer markers, ZIP/Office Open XML structure for DOCX/XLSX/PPTX, RTF control structure, and PE header validation for EXE files.
 
-The repository supports verification and reproduction of the reported experiments, including detection accuracy, payload-level attribution, false-positive analysis, ablation testing, robustness/safe-failure analysis, runtime analysis, and comparison against existing forensic tools.
+The repository supports verification and reproduction of the reported experiments, including detection accuracy, payload-level attribution, expanded false-positive analysis, structural-validation testing, ablation testing, robustness/safe-failure analysis, runtime analysis, and comparison against existing forensic tools.
 
 ---
 
@@ -23,6 +23,8 @@ The method assumes:
 * no destructive post-processing such as JPEG compression, resizing, or additive noise.
 
 The method should therefore be interpreted as a **forensic file-type attribution framework under a compatible embedding model**, not as a universal steganography detector.
+
+The current framework does not claim to recover payloads embedded using randomised traversal, encrypted payloads, compressed payloads, unknown offsets, adaptive embedding, transform-domain steganography, or lossy JPEG-domain embedding. These cases require additional reconstruction, traversal-inference, decryption/decompression, or tool-specific extraction modules.
 
 ---
 
@@ -45,6 +47,9 @@ lsb-stego-detector/
 │   ├── reproduction_protocol.md
 │   └── tool_versions.md
 │
+├── manifests/
+│   └── expanded_clean_manifest.csv
+│
 ├── results/
 │   ├── ablation_results_per_file.csv
 │   ├── ablation_results_summary.csv
@@ -53,6 +58,7 @@ lsb-stego-detector/
 │   ├── covers_metadata.csv
 │   ├── detection_results_combined.csv
 │   ├── embedding_plan_combined.csv
+│   ├── expanded_clean_false_positive_results.csv
 │   ├── false_positive_analysis.csv
 │   ├── false_positive_clean_results.csv
 │   ├── payload_validation.txt
@@ -62,8 +68,13 @@ lsb-stego-detector/
 │   ├── runtime_per_file.csv
 │   ├── runtime_summary.csv
 │   ├── stego_manifest_combined.csv
+│   ├── structural_validation_run.log
+│   ├── structural_validation_stego_1848.csv
+│   ├── structural_validation_summary.csv
 │   ├── table3_per_payload.csv
-│   └── table_category_analysis.csv
+│   ├── table_category_analysis.csv
+│   ├── tool_comparison_per_file.csv
+│   └── tool_comparison_summary.csv
 │
 ├── scripts/
 │   ├── build_combined_embedding_plan.py
@@ -81,7 +92,9 @@ lsb-stego-detector/
 │   ├── run_embedding_combined.py
 │   ├── run_false_positive_clean.py
 │   ├── run_robustness_analysis.py
-│   └── run_runtime_analysis.py
+│   ├── run_runtime_analysis.py
+│   ├── run_structural_validation_1848.py
+│   └── updated_main.py
 │
 ├── README.md
 ├── requirements.txt
@@ -98,6 +111,7 @@ The reported evaluation uses a controlled combined dataset generated from:
 
   * 16 controlled core images;
   * 30 extended XL synthetic images.
+
 * **6 payload types**
 
   * PDF;
@@ -106,11 +120,13 @@ The reported evaluation uses a controlled combined dataset generated from:
   * PPTX;
   * RTF;
   * EXE.
+
 * **3 payload size classes**
 
   * small;
   * medium;
   * large.
+
 * **3 LSB embedding depths**
 
   * 1-bit;
@@ -136,6 +152,29 @@ The reduction from 2484 planned cases to 1848 valid cases is due to:
 
 Only successfully generated stego-images were included in the final evaluation.
 
+The clean-image false-positive evaluation contains:
+
+```text
+Original controlled clean images: 46
+Original clean-image test cases: 46 × 3 LSB depths = 138
+
+Expanded independent clean images: 200
+Expanded clean-image test cases: 200 × 3 LSB depths = 600
+
+Combined clean-image test cases: 738
+```
+
+The expanded clean-image set contains:
+
+```text
+Camera/natural photographs: 50 images
+Screenshots: 50 images
+Scanned document-page images: 50 images
+Noisy images: 50 images
+```
+
+The original controlled clean set already included additional visual categories such as flat-colour, greyscale, high-detail, low-detail, mixed-content, noisy, photographic, and transparency-based images.
+
 ---
 
 ## 4. Repository Data Availability
@@ -143,6 +182,7 @@ Only successfully generated stego-images were included in the final evaluation.
 This GitHub repository contains:
 
 * source code used for detection and evaluation;
+* structurally validated detector scripts;
 * payload files used for controlled embedding experiments;
 * result CSV files underlying the reported manuscript tables;
 * sample cover images;
@@ -150,7 +190,11 @@ This GitHub repository contains:
 * reproducibility documentation;
 * tool and environment version documentation.
 
-The repository currently includes a **sample image subset** for demonstration and testing. The complete generated stego-image dataset is not stored directly in the GitHub repository due to repository-size considerations. The full dataset can be regenerated using the provided payloads, scripts, and manifests when the full carrier image set is placed in the expected directory structure.
+The repository currently includes a sample image subset for demonstration and testing. The complete generated stego-image dataset is not stored directly in the GitHub repository due to repository-size considerations. The full stego-image dataset can be regenerated using the provided payloads, scripts, manifests, and carrier image configuration when the full carrier image set is placed in the expected directory structure.
+
+The expanded clean-image false-positive evaluation contains 200 additional clean images. The public release includes the non-sensitive portions of this evaluation, aggregate result CSV files, metadata, and reproducibility scripts. The 50 camera/natural photograph images used in the expanded clean-image evaluation are not publicly released because they may contain identifiable individuals or private visual information. These images were used only for aggregate false-positive testing and were not used for stego-image generation, training, or method tuning.
+
+No personal data are included in the public release.
 
 Where a separate external dataset archive is available, the corresponding DOI or repository link should be cited in the manuscript Data Availability Statement.
 
@@ -179,15 +223,16 @@ e99c275bc74742ccaf781942ee66a06e6da063ceacb9165d61ee67fc84b3558d
 
 ## 6. Proposed Detector
 
-The main detector is provided in two forms.
+The detector is provided in GUI and command-line/scripted forms.
 
 ### GUI version
 
 ```text
 scripts/main.py
+scripts/updated_main.py
 ```
 
-This provides a Tkinter-based graphical interface for selecting images, specifying LSB depth values, and viewing detected file types and reconstructed header bytes.
+The updated GUI version includes structurally validated attribution. It allows users to select PNG/BMP images, specify candidate LSB depths, and view the detected file type and reconstructed header evidence.
 
 ### Command-line version
 
@@ -207,17 +252,42 @@ Example:
 python3 scripts/detector_cli.py dataset/sample_stego/<sample_stego_image>.bmp 1
 ```
 
-The command-line detector:
+### Structural-validation batch script
+
+```text
+scripts/run_structural_validation_1848.py
+```
+
+This script re-evaluates the full stego-image dataset using the structurally validated attribution rule and writes detailed CSV outputs.
+
+Example:
+
+```bash
+python3 -u scripts/run_structural_validation_1848.py \
+  --input-root ./stego_core_combined \
+  --out-csv ./results/structural_validation_stego_1848.csv \
+  --summary-csv ./results/structural_validation_summary.csv
+```
+
+The detector workflow:
 
 1. opens the input image;
 2. flattens pixel/channel values;
 3. reconstructs LSB bitstreams using StegoLSB-compatible deinterleaving;
 4. removes the StegoLSB length-tag prefix;
-5. checks reconstructed bytes for file signatures;
-6. returns one of:
+5. reconstructs candidate payload bytes;
+6. checks primary file signatures;
+7. applies structural validation:
+
+   * PDF: `%PDF` header, `startxref`, and `%%EOF`;
+   * DOCX/XLSX/PPTX: valid ZIP/OOXML structure, `[Content_Types].xml`, and subtype markers such as `word/`, `xl/`, or `ppt/`;
+   * EXE: `MZ` header and valid `PE\x00\x00` header at the `e_lfanew` offset;
+   * RTF: `{\rtf1` header and basic RTF control structure;
+
+8. returns one of:
 
 ```text
-PDF, DOCX, XLSX, PPTX, RTF, EXE, ZIP, UNKNOWN, ERROR
+PDF, DOCX, XLSX, PPTX, RTF, EXE, Unknown/None, Processing Failed
 ```
 
 ---
@@ -334,6 +404,39 @@ results/false_positive_clean_results.csv
 results/false_positive_analysis.csv
 ```
 
+### Step 6b: Run structurally validated stego-image verification
+
+```bash
+python3 -u scripts/run_structural_validation_1848.py \
+  --input-root ./stego_core_combined \
+  --out-csv ./results/structural_validation_stego_1848.csv \
+  --summary-csv ./results/structural_validation_summary.csv \
+  | tee ./results/structural_validation_run.log
+```
+
+This generates:
+
+```text
+results/structural_validation_stego_1848.csv
+results/structural_validation_summary.csv
+results/structural_validation_run.log
+```
+
+The structurally validated detector retained correct attribution on all 1,848 valid stego-images at the expected embedding depth.
+
+### Step 6c: Run expanded clean-image false-positive evaluation
+
+The expanded clean-image evaluation tests 200 additional clean images across three assumed LSB depths, producing 600 additional clean-image test cases.
+
+Expected output files:
+
+```text
+manifests/expanded_clean_manifest.csv
+results/expanded_clean_false_positive_results.csv
+```
+
+The private camera/natural photograph subset is not publicly released. Aggregate results and metadata are provided for reproducibility without exposing private visual content.
+
 ### Step 7: Run ablation study
 
 ```bash
@@ -405,10 +508,23 @@ If these files are not present in the repository, they can be regenerated using 
 ### Proposed method
 
 ```text
-Total stego samples: 1848
+Total valid stego samples: 1848
 Correct attributions: 1848
 Accuracy: 100.00%
+Exact 95% binomial confidence interval: 99.80%--100.00%
 ```
+
+### Structurally validated attribution
+
+```text
+Valid stego-images tested at expected embedding depth: 1848
+Correct structurally validated attributions: 1848
+Failed expected-depth attributions: 0
+Processing errors: 0
+Expected-depth accuracy: 100.00%
+```
+
+Structural validation reduced accidental clean-image matches while preserving attribution accuracy on the valid stego-image dataset.
 
 ### Payload-level performance
 
@@ -431,13 +547,37 @@ EXE:  308/308
 
 ### Clean-image false-positive analysis
 
+The initial signature-based attribution rule produced three false positives on the original clean-image evaluation:
+
 ```text
-Clean images: 46
+Original clean images: 46
 LSB depths tested: 3
-Total clean-image test cases: 138
-False-positive events: 3
-Overall false-positive rate: 2.17%
+Original clean-image test cases: 138
+False-positive events under initial signature-only rule: 3
+Initial false-positive rate: 2.17%
+Exact 95% confidence interval: 0.45%--6.22%
 ```
+
+After adding structural validation, the same original clean set and the expanded clean set produced no false positives:
+
+```text
+Structurally validated rule on original clean set: 0/138 false positives
+Structurally validated rule on expanded clean set: 0/600 false positives
+Combined structurally validated clean evaluation: 0/738 false positives
+Observed combined false-positive rate: 0.00%
+Exact 95% confidence interval: 0.00%--0.50%
+```
+
+The expanded clean-image evaluation contains 200 additional clean images across four categories:
+
+```text
+Camera/natural photographs: 50 images, 150 LSB-depth tests
+Screenshots: 50 images, 150 LSB-depth tests
+Scanned document-page images: 50 images, 150 LSB-depth tests
+Noisy images: 50 images, 150 LSB-depth tests
+```
+
+The private camera/natural photograph subset is not publicly released because it may contain identifiable individuals or private visual information. Aggregate results and metadata are provided instead.
 
 ### Ablation study
 
@@ -469,7 +609,7 @@ The comparison tools operate under different assumptions:
 * `exiftool` inspects metadata fields;
 * `zsteg` performs LSB-oriented heuristic extraction.
 
-These tools do not perform the same deterministic StegoLSB-compatible bitstream reconstruction used in the proposed method.
+These tools do not perform the same deterministic StegoLSB-compatible bitstream reconstruction, offset handling, and structurally validated file-type attribution used in the proposed method.
 
 In the evaluated dataset:
 
@@ -481,13 +621,13 @@ foremost:           0/1848 (0.00%)
 exiftool:           0/1848 (0.00%)
 ```
 
-The result demonstrates that direct raw-byte inspection and metadata analysis are insufficient for file-type attribution when the payload is dispersed across LSB pixel channels. The proposed method reconstructs the hidden byte stream before applying file-type attribution.
+The result demonstrates that direct raw-byte inspection and metadata analysis are insufficient for file-type attribution when the payload is dispersed across LSB pixel channels. The proposed method reconstructs the hidden byte stream before applying structurally validated file-type attribution.
 
 ---
 
 ## 11. Robustness and Safe-Failure Behaviour
 
-The robustness analysis evaluated a stratified subset of 36 stego-images under:
+The robustness/safe-failure analysis evaluated a stratified subset of 36 stego-images under:
 
 * JPEG compression;
 * resizing;
@@ -508,9 +648,11 @@ The method has the following limitations:
 1. It assumes a StegoLSB-compatible sequential embedding model.
 2. It requires the correct or tested LSB depth.
 3. It depends on lossless image representations.
-4. It does not recover encrypted, compressed, or obfuscated payloads if recognisable file signatures are absent.
+4. It does not recover encrypted, compressed, or obfuscated payloads if recognisable plaintext file signatures or structures are absent.
 5. It is not designed for randomised pixel traversal, adaptive embedding, transform-domain steganography, or lossy JPEG-domain embedding.
-6. The clean-image evaluation is limited and should be expanded for stronger forensic reliability estimation.
+6. Variable payload offsets used by other tools may require offset-inference methods such as sliding-window signature search or structural validation across multiple offset hypotheses.
+7. The expanded clean-image evaluation improves false-positive assessment, but it remains a finite benchmark and does not represent all possible real-world image acquisition conditions.
+8. The private camera/natural photograph subset used for aggregate false-positive testing is withheld from public release for privacy reasons.
 
 ---
 
