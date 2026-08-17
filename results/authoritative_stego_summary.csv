@@ -1,0 +1,15 @@
+metric,value
+manifest_rows,1848
+samples_tested,1848
+structural_correct,1848
+structural_incorrect,0
+structural_accuracy_percent,100.0000
+processing_errors,0
+baseline_exact_correct,924
+baseline_exact_incorrect,924
+baseline_exact_accuracy_percent,50.0000
+total_runtime_seconds,7553.390136
+mean_runtime_seconds,4.087151
+median_runtime_seconds,1.229321
+minimum_runtime_seconds,0.124609
+maximum_runtime_seconds,30.456203
