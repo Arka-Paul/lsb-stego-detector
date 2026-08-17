@@ -1,0 +1,9 @@
+group,tests,structural_false_positives,structural_fp_rate_percent,baseline_false_positives,baseline_fp_rate_percent,processing_errors,total_runtime_seconds,mean_runtime_seconds,median_runtime_seconds,minimum_runtime_seconds,maximum_runtime_seconds
+combined_246,738,0,0.0000,0,0.0000,0,,,,,
+original_46,138,0,0.0000,0,0.0000,0,,,,,
+expanded_200,600,0,0.0000,0,0.0000,0,,,,,
+camera_photos,150,0,0.0000,0,0.0000,0,,,,,
+screenshots,150,0,0.0000,0,0.0000,0,,,,,
+document_scans,150,0,0.0000,0,0.0000,0,,,,,
+noisy,150,0,0.0000,0,0.0000,0,,,,,
+runtime,738,,,,,,829.239979,1.123555,0.600982,0.015718,25.650532
